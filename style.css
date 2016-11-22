@@ -63,4 +63,20 @@
 }
 a{
  color: aliceblue;   
+} 
+#header-slider{
+/*    max-height:110px;*/
+/*
+    position: absolute;
+    top: 110px;
+*/
+}
+#myCarousel{
+    position: fixed;
+    top: 110px;
+    margin-left: 14px;
+    margin-right: 0;
+}
+.item img{
+    width: 100%;
 }
