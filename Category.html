@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/jquery.bxslider.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet">
+    <link href="css/categoryStyle.css" rel="stylesheet">
     <!-- Bootstrap core JavaScript
     ================================================== -->
 
@@ -56,122 +56,51 @@
                     1<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 </Button>
             </div>
+            <div id="header-menu" class="nav navbar-nav">
+                <li><a href="#">صفحه اصلی</a></li>
+                <li><a href="#">طبقه بندی موضوعی</a></li>
+                <li><a href="#">نویسندگان</a></li>
+                <li><a href="#">رده های سنی</a></li>
+                <li><a href="#">سال انتشار</a></li>
+                <li><a href="#" style="color:#fbc02d;">تقریظ های رهبری</a></li>
+                
+            </div>
+            
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-      <div class="container-fluid">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-          </ol>
-
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img src="images/2.jpg" alt="Chania">
-            </div>
-
-            <div class="item">
-              <img src="images/2.jpg" alt="Chania">
-            </div>
-
-            <div class="item">
-              <img src="images/2.jpg" alt="Chania">
-            </div>
-
-            <div class="item">
-              <img src="images/2.jpg" alt="Chania">
-            </div>
+      <div id="content" class="container">
+          <div id="searchBox" class="col-md-3">
+             <div id="searchBoxTitle">
+                        جستجو      
+             </div>
+             <div id="objectiveCat">
+                 <h4> طبقه بندی موضوعی</h4>
+                 <ul>
+                     <li><a href="#"> تخیلی</a></li>
+                     <li><a href="#"> تخیلی</a></li>
+                     <li><a href="#"> مذهبی</a></li>
+                     <li><a href="#"> داستانی</a></li>
+                     <li><a href="#"> علمی</a></li>
+                 </ul>
+                 <a href="#">بیشتر... </a>  
+             </div>
+             <hr id="dashed">
+             <div id="searchStatement">
+                 <h4>جستجوی عبارت</h4>
+                    <form id="searchGroup" class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input id="searchTxt2" type="text" placeholder="جستجو ..." class="form-control">
+                            <button type="submit" id="searchBtn2" class="btn btn-success">  
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </form>
+             </div>
+          </div>
+          <div class="col-md-9">
               
           </div>
-        </div>
-      </div>
-      <div id="middleBox" class="container-fluid ">
-          <div class="col-md-6 text-left col-sm-6 col-xs-6 ">
-            <a><img class="img-responsive" src="images/middle1.jpg" /></a>
-          </div>
-          <div class="col-md-6 col-sm-6 col-xs-6">
-            <a><img class="img-responsive" src="images/middle1.jpg" /></a>
-          </div>
-      </div>
-      <div id="chosenBooksTitle" class="containter">
-        <div class="row">
-            <div style="text-decoration:underline;text-decoration-color:orange;" class="col-md-12">
-                برگزیده هفته
-            </div>
-        </div>
-      </div>
-      <div id="chosenBooks" class="containter">
-          <div class="row">
-
-              <div class="col-md-2">
-                    <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-          </div>
-      </div>
-     <div id="chosenBooksTitle" class="containter">
-        <div class="row">
-            <div style="text-decoration:underline;text-decoration-color:orange;" class="col-md-12">
-                پرفروش ترین ها
-            </div>
-        </div>
-      </div>
-      <div id="chosenBooks" class="containter">
-          <div class="row">
-
-              <div class="col-md-2">
-                    <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-          </div>
-      </div>      
-         <div style="padding:0;font-size:25px;" id="chosenBooksTitle" class="containter text-center">
-            ...
       </div>
       <hr>
 
