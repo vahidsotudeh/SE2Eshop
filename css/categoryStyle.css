@@ -144,6 +144,9 @@ a{
     position: relative;
     margin-top: 130px;
 }
+#sidebar{
+    padding: 0;
+}
 #searchBox{
     font-family: "BYekan";
     border: solid;
@@ -214,6 +217,76 @@ a{
 }
 #costRangeSlider{
     margin-left: 3px;
+}
+#ageRange{
+    margin-right: 12px;
+    margin-left: 5px;
+    color: black;
+}
+#ageRange a{
+    color: black;
+}
+#publishedYear{
+   margin-right: 12px;
+    margin-left: 5px;
+    color: black;
+    margin-bottom: 7px;
+}
+#publishedYear a{
+        color: black;
+}
+#recentReviews{
+    margin-top: 10px;
+    font-family: "BYekan";
+    color: white;
+    border: solid;
+    padding: 0;
+    border-width: 2px;
+    border-color: #555;
+}
+#reviewBoxTitle{
+    width: 100%;
+    background-color: rgb(72, 88, 103);
+    font-size: 22px;
+    text-align: center;
+}
+.r-img-title { margin:0 0 15px; overflow:hidden; }
+.r-img-title img { float:right; margin-right:0px; border:1px solid #dcdcdc; }
+.r-det-holder { float:right;margin-right: 10px;margin-bottom: 10px; }
+.r-author { font-size:18px;font-weight:normal;color: black; }
+.r-author a { color:#2c2c2c;}
+.r-by { display:block; margin:0 0 5px;color: black; }
+.r-img-title .rating-bar img { border:0; }
+.r-post p { margin:10px; font-size:12px; color:#000; }
+.r-post img{float: right;}
+.r-type { font-size:12px; color:#98b827; display:block; margin:0 0 5px; }
+.r-author { font-size:12px; color:#000; display:block;margin: 6px;}
+.r-post:first-child { margin:0; border-top:0; padding:0; }
+.r-post { border-top:1px dotted #dcdcdc; padding-top:10px; margin-top:13px; }
+#book-View-Box{
+    font-family: "BYekan";
+}
+.bk-title{
+
+}
+.bk-title a{
+    color: black;
+    padding: 3px;
+}
+.bk-rating-bar{
+    padding: 3px;
+}
+.cart-price{
+    padding: 0;
+}
+.cart-btn2 { text-indent:-999px; float:left; margin-right:10px; }
+.addtocartBtn{
+    padding: 2px 8px 2px 8px;
+    border: dashed;
+    border-color: #e1ab18;
+    color: black;
+    border-width: 1px;
+    background-color: #98b827;
 }
 @media only screen and (max-width: 768px) {
 .collapsing, .in {background-color: #555;}
