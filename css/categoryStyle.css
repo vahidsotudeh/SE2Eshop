@@ -164,8 +164,8 @@ a{
     color: #555;
 }
 #dashed{
-    border: dashed;
-    border-width:2px; 
+    border: dotted;
+    border-width:1px; 
 }
 #searchStatement{
     padding-right: 12px;
@@ -189,6 +189,31 @@ a{
     font-size: 13px;
     padding: 4.5px 6px 4px 8px;
     margin-right: 2px;
+}
+.searchSenteces{
+    background-color: rgb(229, 230, 232);
+    width: auto;
+    height: auto;
+    color: black;
+    border-radius: 10px;
+    padding-right: 4px;
+    padding-left: 4px;
+    margin-bottom: 50px !important;
+}
+#authors{
+    margin-right: 12px;
+    color: black;
+}
+#authors a{
+    color: black;
+}
+#costRange{
+    margin-right: 12px;
+    margin-left: 5px;
+    color: black;
+}
+#costRangeSlider{
+    margin-left: 3px;
 }
 @media only screen and (max-width: 768px) {
 .collapsing, .in {background-color: #555;}
