@@ -1,0 +1,246 @@
+@font-face {
+    font-family: 'BYekan';
+    src:url("../fonts/BYekan.ttf"),
+    url("../fonts/BYekan.woff"),
+    url("../fonts/BYekan.eot");
+}
+#searchTxt{
+    width: 450px !important;
+    font-family: "BYekan";
+    font-size: 25px;
+    text-align: right;
+    border-radius: 0px 30px 30px 0px;
+    height: 40px;
+    margin-left: -5px !important;
+}
+#header{
+    height: 120px;
+}
+#navbar{
+    margin-top: 30px;
+}
+#searchGroup{
+        margin-right: 25px !important;
+}
+#searchBtn{
+    border-radius: 30px 0px 0px 30px;
+    background: #fbc02d;
+    border-color: #fbc02d;
+    color: black;
+    font-size: 20px;
+    padding: 4.5px 10px 5px 10px;
+    margin-right: 0px;
+
+}
+#loginSignUp{
+    font-size: 18px;
+    color: aliceblue;
+    font-family: "BYekan";
+    top: 10px;
+    left: 50px;
+    position: fixed;
+    float: right;
+    
+}
+#shoppingCart{
+    position: fixed;
+    left: 80px;
+    top: 40px;
+    font-family: "BYekan";
+    
+}
+#shoppingCartBtn{
+    border-radius: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 1px;
+    font-size: 20px;
+    background-color: #fbc02d;
+    color: black;
+    border-color: #fbc02d;
+    
+}
+a{
+ color: aliceblue;   
+} 
+#myCarousel{
+    position: relative;
+    margin-top: 120px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.item img{
+    width: 100%;
+}
+#middleBox{
+    margin-top: 20px;
+}
+.img-responsive {
+   display: inline-block !important;
+}
+#chosenBooks,#chosenBooksTitle{
+    background-color: darkgray;
+    margin-right:8% ;
+    margin-left: 8%;
+}
+#chosenBooksTitle{
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-family: "BYekan";
+    font-size: 22px;
+}
+#aboutUSTitle{
+    margin-top: 0;
+    color: #e1ab18;
+}
+#aboutUS{
+    color: white;
+    padding-right: 40px;
+    font-family: "BYekan";    
+    
+}
+#followUs.col-md-6{
+    padding-left: 90px !important;
+    text-align: left;
+}
+#followUsTitle{
+    font-family: "BYekan";
+        margin-top: 0;
+    color: #e1ab18;
+}
+#followUs  img{
+    margin: 0 9px;
+}
+#emailTel{
+    font-family: "BYekan";
+    font-size: 15px;
+    padding-top: 10px;
+    color: white;
+}
+#contactUs{
+    font-size: 15px;
+    font-family: "BYekan";
+    margin-top: 0;
+    color: white;
+}
+#allRightsReserved{
+    margin-top: 15px;
+    text-align: center;
+    font-family: "BYekan";
+    font-size: 14px;
+    color: white;
+    
+}
+#header-menu{
+
+    font-family: "BYekan";
+    font-size: 20px;
+    margin-top: -25px;
+    margin-right: 12%;
+}
+#content{
+    position: relative;
+    margin-top: 130px;
+}
+.item{
+    border:solid;
+    border-width: 0.5px;
+}
+.item .text-center{
+    padding: 20px;
+    border: solid;
+    border-width: 1px;
+    border-top: none;
+    border-bottom: none;
+
+}
+#copounCode{
+
+}
+.style-2 input[type="text"] {
+  padding: 1px;
+  border: solid 2px #c9c9c9;
+  transition: border 0.3s;
+}
+.style-2 input[type="text"]:focus,
+.style-2 input[type="text"].focus {
+  border: solid 2px #969696;
+}
+.style-2 textarea {
+  padding: 1px;
+  border: solid 2px #c9c9c9;
+  transition: border 0.3s;
+}
+.style-2 textarea:focus,
+.style-2 textarea.focus {
+  border: solid 2px #969696;
+}
+.button-fl{
+  display: inline-block;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+  color: #fff;
+  background-color: #999b96;
+  text-shadow: -1px 1px #417cb8;
+  border: none;
+
+}
+.bordered{
+    border-left: solid;
+}
+
+.button-fl:focus {
+  outline: none;
+}
+
+.button-fl:hover {
+  background-color: #555;
+  text-shadow: -1px 1px #27496d;
+}
+
+.address{
+    font-family: "BYekan";
+    font-size: 18px;
+    margin-top: 20px;
+    border-bottom: solid;
+    border-width: 1px;
+    padding-bottom: 20px;
+}
+.address-form{
+    font-size: 14px;
+}
+
+.form-group.row{
+    padding: 0px;
+    margin: 2px;
+}
+.form-group.row input[type="text"]{
+    width: 100%;
+}
+.form-group.row textarea{
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 768px) {
+.collapsing, .in {background-color: #555;}
+.collapsing ul li a, .in ul li a {color: #e1ab18!important;}
+.collapsing ul li a:hover, .in ul li a:hover {color: #f1f1f1!important;}
+.item .text-center{
+    padding: 2px;
+    border: solid;
+    border-width: 1px;
+    border-top: none;
+    border-bottom: none;
+
+}
+}
+@media (min-width: 768px) and (max-width: 1000px) {
+   .collapse {
+       display: none !important;
+   }
+}
