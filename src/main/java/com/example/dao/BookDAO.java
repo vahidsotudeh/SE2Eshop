@@ -1,11 +1,16 @@
 package com.example.dao;
 
 
+import com.example.dto.BookDTO;
 import com.example.entities.Book;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Amir Shams on 12/23/2016.
@@ -30,6 +35,16 @@ public class BookDAO {
 
         return (Book) criteria.list().get(0);
     }
+
+    public List<Book> getOrderedBooks(int start, int len, String orderBy)
+    {
+        Criteria criteria = createCriteria();
+
+        criteria.addOrder(Order.desc(orderBy)).setFirstResult(start).setMaxResults(len);
+
+        return criteria.list();
+    }
+
     public void add(Book book)
     {
         SessionFactory sessionFactory = Factory.getSessionFactory();
