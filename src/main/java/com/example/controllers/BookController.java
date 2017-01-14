@@ -30,7 +30,7 @@ public class BookController {
 
         Book book = BookDAO.getInstance().getById(id);
 
-        return Response.ok().entity(BookDTO.loadFrom(book)).build();
+        return Response.ok().entity(book).build();
     }
 
     @POST
@@ -46,4 +46,5 @@ public class BookController {
 
         return Response.ok().build();
     }
+
 }

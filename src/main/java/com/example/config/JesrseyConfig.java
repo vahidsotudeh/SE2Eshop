@@ -1,6 +1,7 @@
 package com.example.config;
 
 import com.example.controllers.BookController;
+import com.example.controllers.BookService;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletProperties;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class JesrseyConfig extends ResourceConfig {
     public JesrseyConfig() {
         register(BookController.class);
+        register(BookService.class);
         property(ServletProperties.FILTER_FORWARD_ON_404, true);
     }
 

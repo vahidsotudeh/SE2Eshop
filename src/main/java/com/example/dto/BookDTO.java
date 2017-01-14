@@ -3,6 +3,8 @@ package com.example.dto;
 import com.example.entities.Book;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 /**
  * Created by Amir Shams on 12/14/2016.
  */
@@ -13,17 +15,6 @@ public class BookDTO {
 
     @JsonProperty
     private String id;
-
-    @JsonProperty
-    private String publisher;
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
 
     public void setId(String id) {
         this.id = id;
@@ -50,4 +41,5 @@ public class BookDTO {
 
         return dto;
     }
+
 }
