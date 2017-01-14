@@ -7,13 +7,13 @@ phonecatApp.controller('bookListController', function bookListController($scope,
             //     $scope.books = resp.data;
             // });
         $scope.loadData = function () {
-             $http.get("172.20.188.60:8080/api/book-summary")
+             $http.get("http://172.20.188.60:8080/api/book-summary")
             .then(function(data){
-                $scope.data = data; //return if success on fetch
-                alert("aa");
+                alert(data.title+" sd");
+                $scope.books = data.data; //return if success on fetch
             }, function(error, status) {
-                alert(status);
-              $scope.data = "error in fetching data"; //return if error on fetch
+                alert("aaaaaaaaaaaaaaaaaaaaaaaa");
+              $scope.books.title = "error in fetching data"; //return if error on fetch
         });}
         $scope.loadData(); //return loadData function
             alert("as");
