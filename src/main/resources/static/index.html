@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>خانه کتاب </title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -47,9 +47,9 @@
             </div>
           </form>
             <div id="loginSignUp">
-                <a href="#">ثبت نام</a>
+                <a class="modal_trigger" href="#modal">ثبت نام</a>
                 |
-                <a href="#">ورود</a>
+                <a class="modal_trigger" href="#modal">ورود</a>
             </div>
             <div id="shoppingCart" style="float:right">
                 <Button id="shoppingCartBtn" class="btn btn-primary">
@@ -230,6 +230,81 @@
             </div>
         </div>
       </footer>
+      	<div id="modal" class="popupContainer" style="display:none;">
+		<header class="popupHeader">
+			<span class="header_title">ورود</span>
+			<span class="modal_close"><i class="fa fa-times"></i></span>
+		</header>
+		
+		<section class="popupBody">
+			<!-- Social Login -->
+			<div class="social_login">
+				<div class="">
+					<a href="#" class="social_box fb">
+						<span class="icon"><i class="fa fa-facebook"></i></span>
+						<span class="icon_title">اتصال با فیسبوک</span>
+						
+					</a>
+
+					<a href="#" class="social_box google">
+						<span class="icon"><i class="fa fa-google-plus"></i></span>
+						<span class="icon_title">اتصال با گوگل</span>
+					</a>
+				</div>
+
+				<div class="centeredText">
+					<span>یا از حساب کاربری خود  استفاده کنید</span>
+				</div>
+
+				<div class="action_btns">
+					<div class="one_half"><a href="#" id="login_form" class="btn">ورود</a></div>
+					<div class="one_half last"><a href="#" id="register_form" class="btn">ثبت نام</a></div>
+				</div>
+			</div>
+
+			<!-- Username & Password Login form -->
+			<div class="user_login">
+				<form>
+					<label>ایمیل / نام کاربری</label>
+					<input type="text" />
+					<br />
+
+					<label>رمز عبور</label>
+					<input type="password" />
+					<br />
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> برگشت</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">ورود</a></div>
+					</div>
+				</form>
+
+				<a href="#" class="forgot_password">رمز خود را فراموش کرده اید؟</a>
+			</div>
+
+			<!-- Register Form -->
+			<div class="user_register">
+				<form>
+					<label>نام و نام خانوادگی</label>
+					<input type="text" />
+					<br />
+
+					<label>آدرس ایمیل</label>
+					<input type="email" />
+					<br />
+
+					<label>رمز عبور </label>
+					<input type="password" />
+					<br />
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> برگشت</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">ثبت نام</a></div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
     </div> <!-- /container -->
 
     <!-- Placed at the end of the document so the pages load faster -->
@@ -238,6 +313,22 @@
     <script src="js/jquery.fitvids.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="js/angular-mocks.js"></script>
+    <script type="text/javascript" src="js/angular-scenario.js"></script>
+    <script type="text/javascript" src="js/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="js/angular-loader.min.js"></script>
+    <script type="text/javascript" src="js/angular-messages.min.js"></script>
+    <script type="text/javascript" src="js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="js/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/angular-aria.min.js"></script>
+    <script type="text/javascript" src="js/angular-message-format.min.js"></script>
+    <script type="text/javascript" src="js/angular-parse-ext.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+
+    <script src="js/script.js" type="text/javascript"></script>
     <script>
 
     </script>    
