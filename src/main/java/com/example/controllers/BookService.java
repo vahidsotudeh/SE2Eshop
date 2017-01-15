@@ -4,6 +4,9 @@ import com.example.dao.BookDAO;
 import com.example.dto.BookDTO;
 import com.example.dto.BookSummaryDTO;
 import com.example.entities.Book;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -26,6 +29,13 @@ public class BookService {
             @DefaultValue("score") @QueryParam("order") String orderBy) throws IOException {
 
         List<Book> result = BookDAO.getInstance().getOrderedBooks(start,len,orderBy);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if(auth != null)
+            System.out.println("logged in : " + auth.getName());
+        else
+            System.out.println("null");
 
         return Response.ok().entity(result).build();
     }
