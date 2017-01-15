@@ -35,8 +35,6 @@ public class MyUserDetailsService implements UserDetailsService {
 
     }
 
-    // Converts com.mkyong.users.model.User user to
-    // org.springframework.security.core.userdetails.User
     private User buildUserForAuthentication(com.example.entities.User user,
                                             List<GrantedAuthority> authorities) {
         return new User(user.getUsername(), user.getPassword(),
@@ -47,7 +45,6 @@ public class MyUserDetailsService implements UserDetailsService {
 
         Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 
-        // Build user's authorities
         for (UserRole userRole : userRoles) {
             setAuths.add(new SimpleGrantedAuthority(userRole.getRole()));
         }

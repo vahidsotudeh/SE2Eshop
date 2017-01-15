@@ -33,8 +33,6 @@ public class UserDAO{
 
         List<User> users = criteria.list();
 
-        System.out.println(users);
-
         if (users.size() > 0) {
             return users.get(0);
         } else {

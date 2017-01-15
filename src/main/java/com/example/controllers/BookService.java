@@ -1,17 +1,11 @@
 package com.example.controllers;
 
 import com.example.dao.BookDAO;
-import com.example.dto.BookDTO;
-import com.example.dto.BookSummaryDTO;
 import com.example.entities.Book;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
