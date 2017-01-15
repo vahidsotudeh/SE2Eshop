@@ -26,16 +26,9 @@ public class BookService {
     public Response getBookSummary(
             @DefaultValue("0") @QueryParam("start") int start,
             @DefaultValue("10") @QueryParam("len") int len,
-            @DefaultValue("score") @QueryParam("order") String orderBy) throws IOException {
+            @DefaultValue("id") @QueryParam("order") String orderBy) throws IOException {
 
         List<Book> result = BookDAO.getInstance().getOrderedBooks(start,len,orderBy);
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        if(auth != null)
-            System.out.println("logged in : " + auth.getName());
-        else
-            System.out.println("null");
 
         return Response.ok().entity(result).build();
     }
