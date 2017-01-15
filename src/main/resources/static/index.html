@@ -19,6 +19,7 @@
     ================================================== -->
     <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>-->
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/restangular.min.js"></script>
     <!--<script type="text/javascript" src="js/angular-mocks.js"></script>
     <script type="text/javascript" src="js/angular-scenario.js"></script>
     <script type="text/javascript" src="js/angular-cookies.min.js"></script>
@@ -284,7 +285,7 @@
 
 			<!-- Username & Password Login form -->
 			<div class="user_login">
-				<form>
+				<form ng-submit="login()">
 					<label>ایمیل / نام کاربری</label>
 					<input type="text" />
 					<br />
@@ -295,7 +296,7 @@
 
 					<div class="action_btns">
 						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> برگشت</a></div>
-						<div class="one_half last"><a href="#" class="btn btn_red">ورود</a></div>
+						<div class="one_half last"><input type="submit" value="ورود" class="btn btn_red"/></div>
 					</div>
 				</form>
 
