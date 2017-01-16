@@ -58,6 +58,5 @@ public class AccessHandler {
         session.setAttribute("token",accessToken);
         session.setAttribute("role",role);
         session.setAttribute("username",username);
-        System.out.println(session);
     }
 }

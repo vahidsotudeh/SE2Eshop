@@ -1,8 +1,10 @@
 package com.example.controllers;
 
+import com.example.dao.OrderDAO;
 import com.example.dao.UserDAO;
 import com.example.dto.LoginDTO;
 import com.example.dto.RegistrationDTO;
+import com.example.entities.Order;
 import com.example.entities.User;
 import com.example.security.AccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.List;
 
 /**
  * Created by Amir Shams on 1/15/2017.
@@ -40,6 +44,16 @@ public class UserService {
         AccessHandler.setAccessToken(accessToken,user.getRole(),session,user.getUsername());
 
         return Response.ok(accessToken).build();
+    }
+
+    @GET
+    @Path("users")
+    @Produces("application/json")
+    public Response getUsers() throws IOException {
+
+        List<User> users = UserDAO.getInstance().getAll();
+
+        return Response.ok().entity(users).build();
     }
 
     @GET

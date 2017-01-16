@@ -20,7 +20,7 @@ public class DiscountCode {
     private int amount;
 
     @Column
-    private boolean isEnabled;
+    private String isEnabled;
 
     public String getCode() {
         return code;
@@ -39,11 +39,11 @@ public class DiscountCode {
         this.amount = amount;
     }
 
-    public boolean isEnabled() {
+    public String isEnabled() {
         return isEnabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(String enabled) {
         isEnabled = enabled;
     }
 }

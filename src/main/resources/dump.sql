@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `book` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `bookId` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
   `author` varchar(45) NOT NULL,
   `price` varchar(45) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `book` (
   `summary` varchar(512) NOT NULL,
   `review` varchar(1024) NOT NULL,
   `ISBN` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`bookId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -62,7 +62,7 @@ DROP TABLE IF EXISTS `book_order`;
 CREATE TABLE `book_order` (
   `bookId` bigint(20) NOT NULL,
   `orderId` bigint(20) NOT NULL,
-  `count` varchar(45) NOT NULL,
+  `orderCount` varchar(45) NOT NULL,
   `id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -115,7 +115,7 @@ DROP TABLE IF EXISTS `discount_code`;
 CREATE TABLE `discount_code` (
   `code` varchar(128) NOT NULL,
   `amount` int(11) NOT NULL,
-  `isEnabled` bit(1) NOT NULL,
+  `isEnabled` varchar(10) NOT NULL,
   PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -126,33 +126,33 @@ CREATE TABLE `discount_code` (
 
 LOCK TABLES `discount_code` WRITE;
 /*!40000 ALTER TABLE `discount_code` DISABLE KEYS */;
-INSERT INTO `discount_code` VALUES ('123456',5,'');
+INSERT INTO `discount_code` VALUES ('123456',5,'yes');
 /*!40000 ALTER TABLE `discount_code` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `order`
+-- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `userId` varchar(45) NOT NULL,
   `orderDate` date NOT NULL,
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
+  `orderId` bigint(20) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`orderId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `order`
+-- Dumping data for table `orders`
 --
 
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES ('saleh','2015-12-12',1);
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES ('saleh','2015-12-12',1);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -163,12 +163,12 @@ DROP TABLE IF EXISTS `payment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payment` (
-  `id` bigint(20) NOT NULL,
+  `orderId` bigint(20) NOT NULL,
   `price` int(11) NOT NULL,
   `paymentDate` date NOT NULL,
   `code` bigint(20) NOT NULL,
   `type` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`orderId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -206,7 +206,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('amir','123','admin','','امیر شمس','Amir Shams'),('saleh','123','user',NULL,'صالح جعفری زاده','Saleh Jafarizadeh'),('vahid','123','user','','وحید ستوده','Vahid Sotudeh');
+INSERT INTO `user` VALUES ('amir','123','admin','2rsbp6pq9ibh0c0dul3g2nni6k','امیر شمس','Amir Shams'),('saleh','123','user',NULL,'صالح جعفری زاده','Saleh Jafarizadeh'),('vahid','123','user','','وحید ستوده','Vahid Sotudeh');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -219,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-17  0:47:51
+-- Dump completed on 2017-01-17  2:45:09
