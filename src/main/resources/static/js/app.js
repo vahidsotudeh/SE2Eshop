@@ -1,46 +1,70 @@
-var phonecatApp = angular.module('mainPage', []);
+var bookStoreApp = angular.module('mainPage', ['ngCookies','ngRoute']);
+var baseUrl="http://172.20.185.149:8080/api";
+var imageBaseUrl="http://172.20.185.149:8080"; 
+ bookStoreApp.controller('moreBooks', function($scope,$http,$cookies,$route,$location,$routeParams) {
+     $scope.name = 'moreBooks';
+     $scope.params = $routeParams;
+     $scope.counter=0;
+     $scope.moreLinkClicked=false;
+ });
 
-// Define the `PhoneListController` controller on the `phonecatApp` module
+bookStoreApp.controller('bookListController',function bookListController($scope,$http,$cookies,$route,$location,$routeParams) {
+         $scope.clickCounter=1;
+     $scope.moreLinkClicked=false;
+     $scope.manyBooksCounter=[];
+     $scope.moreBtnOnClick=function () { 
+         $scope.clickCounter++;
+         $scope.len=$scope.clickCounter*6;
+         $http.get(baseUrl+"/book-summary?len="+$scope.len+"&start="+($scope.len-6)+"&order=score").then(function (data) { 
+            $scope.manyBooks=data.data;
+            $scope.moreLinkClicked=true;
+            for(var i=0;i<$scope.manyBooks.length;i++){
+                  $scope.manyBooks[i].imageAddress=imageBaseUrl+$scope.manyBooks[i].imageAddress;
+            }
+            alert($scope.clickCounter);
+            $scope.manyBooksCounter[$scope.clickCounter-1]=$scope.manyBooks;
+            alert(data.data);
+          },function (error) { 
+            alert("a");
+           });
 
-        //  jqeury.ajax({ 
-        //      type: "GET",
-        //      dataType: "json",
-        //      url: "http://172.20.188.60:8080/api/book-summary",
-        //      success: function(data){        
-        //         alert(data);
-        //      }
-        //  });   
-phonecatApp.controller('bookListController', function bookListController($scope,$http) {
-            // $http.get('http://172.20.188.60:8080/api/book-summary').success(function(resp) {
-            //     alert("as");
-            //     $scope.books = resp.data;
-            // });
-        $scope.loadData = function () {
-             $http.get("http://172.20.188.60:8080/api/book-summary")
+      }
+
+        $scope.getBooksOrderBySaleCount = function () {
+             $http.get(baseUrl+"/book-summary?order=saleCount&len=6")
             .then(function(data){
-                alert(data.data[0].title+" sd");
-                $scope.books = data.data; //return if success on fetch
+                $scope.bestSellers = data.data; //return if success on fetch
+                for(var i=0;i<$scope.bestSellers.length;i++){
+                  $scope.bestSellers[i].imageAddress=imageBaseUrl+$scope.bestSellers[i].imageAddress;
+                  
+                }
             }, function(resp) {
-                alert(resp.status);
-              $scope.books.title = "error in fetching data"; //return if error on fetch
+              $scope.books.title = "error in fetching data"; 
             });
         }
-        
-        $scope.login=function (data) {
-        //     $http({url: "http://172.20.188.60:8080/login",
-        //     method:"POST",
-        //     data: {username:"amir",password:"123"},
-        //     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        // })
-        $http.post("http://172.20.188.60:8080/login","username=amir&password=123&grant_type=password")
-            .then(function (param) { 
-                alert(param.data);
-             },function (param) {  
-                alert(param.status);
+        $scope.getBooksOrderByScore = function () {
+             $http.get(baseUrl+"/book-summary?order=score&len=6")
+            .then(function(data){
 
-             });    
+                $scope.highScores= data.data;
+
+                for(var i=0;i<$scope.highScores.length;i++){
+                  $scope.highScores[i].imageAddress=imageBaseUrl+$scope.highScores[i].imageAddress;
+                  
+                }
+            }, function(resp) {
+              $scope.books.title = "error in fetching data"; 
+            });
         }
+                // $cookies.put("username", "123");
+                // $cookies.put("username1", "123");
+                // $cookies.put("username2", "123");
+                // $cookies.put("username3", "123");
+                // $cookies.put("username4", "123");
+                // $cookies.put("username5", "123");
+                     //   alert($cookies.get("username"));
+        $scope.getBooksOrderBySaleCount(); //return loadData function
+        $scope.getBooksOrderByScore();
 
-        $scope.loadData(); //return loadData function
         
     });

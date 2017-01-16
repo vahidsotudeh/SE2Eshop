@@ -20,16 +20,17 @@
     <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>-->
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/restangular.min.js"></script>
-    <!--<script type="text/javascript" src="js/angular-mocks.js"></script>
-    <script type="text/javascript" src="js/angular-scenario.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+    <!--<script type="text/javascript" src="js/angular-mocks.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-scenario.js"></script>-->
     <script type="text/javascript" src="js/angular-cookies.min.js"></script>
-    <script type="text/javascript" src="js/angular-loader.min.js"></script>
-    <script type="text/javascript" src="js/angular-messages.min.js"></script>
-    <script type="text/javascript" src="js/angular-animate.min.js"></script>
+    <!--<script type="text/javascript" src="js/angular-loader.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-messages.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-animate.min.js"></script>-->
     <script type="text/javascript" src="js/angular-resource.min.js"></script>
-    <script type="text/javascript" src="js/angular-aria.min.js"></script>
-    <script type="text/javascript" src="js/angular-message-format.min.js"></script>
-    <script type="text/javascript" src="js/angular-parse-ext.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-aria.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-message-format.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-parse-ext.min.js"></script>-->
     <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
     <script src="js/app.js" type="text/javascript"></script>
 
@@ -38,7 +39,9 @@
   </head>
 
   <body ng-app="mainPage" ng-controller="bookListController">
-
+      <div ng-view>
+          
+      </div>
     <nav id="header" class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -85,7 +88,7 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-      <div class="container-fluid" >
+      <div class="container-fluid " >
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -127,41 +130,22 @@
       <div id="chosenBooksTitle" class="containter">
         <div class="row">
             <div style="text-decoration:underline;text-decoration-color:orange;" class="col-md-12">
-                <!--برگزیده هفته-->
-                <ul>
-                    <li >
-                        {{books.title}}
-                    </li>
-                </ul>
+                برگزیده هفته
             </div>
         </div>
       </div>
       <div id="chosenBooks" class="containter">
           <div class="row">
 
-              <div class="col-md-2">
-                    <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
+              <div ng-repeat="book in bestSellers" class="col-md-2" ng-mouseleave="opt=false" ng-mouseenter="opt=true">
+                    <a href="bookDetail.html?bookId={{book.id}}"><img class="img-responsive" ng-src="{{book.imageAddress}}" />
+                   <div  style="line-height:39px;font-size:20px;background-color:rgba(145,145,145,0.8);position: absolute;top: 0px; right:7.5%;text-align: center; width: 85%;height: 100%;color:black; font-family:'BYekan'" ng-show="opt" id="book{{book.id}}">
+                       {{book.title}}<br>
+                       قیمت:{{book.price}} هزار تومان <br>
+                       نویسنده:<br>
+                       {{book.author}}
+                   </div>
+                    </a>
               </div>
           </div>
       </div>
@@ -171,39 +155,41 @@
                 پرفروش ترین ها
             </div>
         </div>
-      </div>
+    </div>
       <div id="chosenBooks" class="containter">
           <div class="row">
-
-              <div class="col-md-2">
-                    <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
+              <div ng-repeat="book in highScores" class="col-md-2" ng-mouseleave="opt=false" ng-mouseenter="opt=true" >
+                    <a href="bookDetail.html?bookId={{book.id}}"><img class="img-responsive" title="Smiley face" ng-src="{{book.imageAddress}}"   />
+                   <div class="textOverBooks"  style="line-height:39px;font-size:20px;background-color:rgba(145,145,145,0.8);position: absolute;top: 0px; right:7.5%;text-align: center; width: 85%;height: 100%;color:black; font-family:'BYekan'" ng-show="opt" id="book{{book.id}}">
+                       {{book.title}}<br>
+                       قیمت:{{book.price}} هزار تومان <br>
+                       نویسنده:<br>
+                       {{book.author}}
               </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
-              <div class="col-md-2">
-                                  <a><img class="img-responsive" src="images/ch1.jpg" /></a>
-
-              </div>
+              </a>
           </div>
       </div>      
-         <div style="padding:0;font-size:25px;" id="chosenBooksTitle" class="containter text-center">
-            ...
       </div>
+      <div id="chosenBooks" class="containter" ng-repeat="manyBooks in manyBooksCounter">
+          <div class="row" >
+              <div  ng-repeat="book in manyBooks" class="col-md-2" ng-mouseleave="opt=false" ng-mouseenter="opt=true" >
+                    <a href="bookDetail.html?bookId={{book.id}}"><img class="img-responsive" title="Smiley face" ng-src="{{book.imageAddress}}"   />
+                   <div class="textOverBooks"  style="line-height:39px;font-size:20px;background-color:rgba(145,145,145,0.8);position: absolute;top: 0px; right:7.5%;text-align: center; width: 85%;height: 100%;color:black; font-family:'BYekan'" ng-show="opt" id="book{{book.id}}">
+                       {{book.title}}<br>
+                       قیمت:{{book.price}} هزار تومان <br>
+                       نویسنده:<br>
+                       {{book.author}}
+              </div>
+              </a>
+          </div>
+        </div>      
+      </div>
+            <div style="padding:0;font-size:25px;" id="chosenBooksTitle" class="containter text-center">
+             <div class="row" ng-click="moreBtnOnClick()" >
+                    بیشتر   ...
+            </div>
+            </div>
+            
       <hr>
 
       <footer>

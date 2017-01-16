@@ -231,3 +231,10 @@ a.btn_red {color: #FFF;}
 .user_register input[type="checkbox"]+label {float:left;}
 
 .user_register .checkbox {margin-bottom: 10px; clear: both; overflow: hidden;}
+
+.hoverImagetext{ width:340px; height:217px; background:#FFF; opacity:0; }
+.hoverImage:hover .hoverImagetext { opacity:0.6; text-align:justify; color:#000000; font-size:20px; font-weight:700; font-family:"Times New Roman", Times, serif; padding:10px; }
+.textOverBooks{}
+.ng-hide {
+		transform-origin: 100% 213.5px !important; /* half of height */
+	}
