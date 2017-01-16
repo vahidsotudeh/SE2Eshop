@@ -1,7 +1,7 @@
 var bookStoreApp = angular.module('detailPage', ['ngCookies','ngRoute']);
 var baseUrl="http://172.20.185.149:8080/api";
 var imageBaseUrl="http://172.20.185.149:8080"; 
-var absoluteUrl="file:///C:/Users/Microsoft/IdeaProjects/SE2Eshop/src/main/resources/static/BookDetail.html?";
+var absoluteUrl="http://localhost:8080/bookDetail.html?";
 
 
 bookStoreApp.controller('bookDetailController',function bookDetailController($scope,$http,$cookies,$location,$routeParams) {
@@ -19,7 +19,7 @@ bookStoreApp.controller('bookDetailController',function bookDetailController($sc
              alert("error");
           });
         }
-        alert($cookies.get("shoppingCartItemsCount"));
+        //alert($cookies.get("shoppingCartItemsCount"));
         $scope.fetchBookDetail();
         $cookies.put('shoppingCartItemsCount','1');
         // $cookieStore.put('shoppingCartItemsCount','1');
