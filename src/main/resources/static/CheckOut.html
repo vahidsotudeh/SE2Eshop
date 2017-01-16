@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>سبد خرید</title>
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
 
     <!-- Bootstrap core CSS -->
@@ -17,11 +17,15 @@
     <link href="css/CheckOutStyle.css" rel="stylesheet">
     <!-- Bootstrap core JavaScript
     ================================================== -->
-
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="js/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/checkOutApp.js"></script>
 
 </head>
 
-<body>
+<body ng-app="checkOutPage" ng-controller="checkOutPageController">
 
     <nav id="header" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -91,63 +95,34 @@
             </div>
             <div class="col-md-1 col-sm-1 col-xs-1 text-center"></div>
         </div>
-        <div class="row item">
+        <div ng-repeat="book in bookDetails" class="row item">
             <div class="col-md-5 col-sm-5 col-xs-5 text-center bordered">
-                در جستجوی خوشبختی (رمان)
+                {{book.title}}
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 text-center">
-                10 هزارتومان 
+                {{book.price}} هزارتومان 
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 text-center">
-                5
+                {{book.count}}
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 text-center">
-                50 هزار تومان
+                {{book.count*book.price}} هزارتومان
             </div>
-            <div class="col-md-1 col-sm-1 col-xs-1 text-center">*</div> 
+            <div class="col-md-1 col-sm-1 col-xs-1 text-center">حذف</div> 
         </div>   
-        <div class="row item">
-            <div class="col-md-5 col-sm-5 col-xs-5 text-center">
-                در جستجوی خوشبختی (رمان)
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
-                10000
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
-                5
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
-                50000
-            </div>
-            <div class="col-md-1 col-sm-1 col-xs-1 text-center">*</div> 
-        </div>  
-                <div class="row item">
-            <div class="col-md-5 col-sm-5 col-xs-5 text-center">
-                در جستجوی خوشبختی (رمان)
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
-                10 هزارتومان 
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
-                5
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
-                50 هزار تومان
-            </div>
-            <div class="col-md-1 col-sm-1 col-xs-1 text-center">*</div> 
-        </div>  
+ 
         <div class="row" style="margin-top:20px;text-align:left;border-bottom:solid;border-width:1px;">
         <div class="container-fluid">
             <div class="col-md-9 col-sm-8 col-xs-7  style-2" >
                 <div class="row " style="text-align:right">
                     کد تخفیف :
-                    <input type="text" >
-                    <button class="button-fl">اعمال کد</button>
+                    <input type="text" ng-model="discountCode">
+                    <button  ng-click="computeDiscount()" class="button-fl">اعمال کد</button>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-5">
-                    <h5 style="color:red">-تخفیف : 100,000 تومان </h5>
-                    قیمت کل : 850,000 تومان
+                    <h5 style="color:red">-تخفیف : {{discount}} تومان </h5>
+                    قیمت کل : {{totalPrice}} هزارتومان
             </div>
         </div>  
         </div>
