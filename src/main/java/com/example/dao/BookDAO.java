@@ -33,6 +33,10 @@ public class BookDAO {
         Criteria criteria = createCriteria();
         criteria.add(Restrictions.eq("id",id));
 
+        List<Book> books = criteria.list();
+        if(books.size() == 0)
+            return null;
+
         return (Book) criteria.list().get(0);
     }
 

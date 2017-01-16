@@ -30,6 +30,9 @@ public class BookController {
 
         Book book = BookDAO.getInstance().getById(id);
 
+        if(book == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+
         return Response.ok().entity(book).build();
     }
 

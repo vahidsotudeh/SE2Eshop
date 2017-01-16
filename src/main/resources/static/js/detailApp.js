@@ -8,11 +8,11 @@ var absoluteUrl=absoluteUrlOrigion;
 bookStoreApp.controller('bookDetailController',function bookDetailController($scope,$http,$cookies,$location,$routeParams) {
             $scope.currUrl=$location.absUrl().replace(absoluteUrl,"").replace("#!/","");
             $scope.bookId=$scope.currUrl.replace("bookId=","");
-            $scope.shoppingCartItemsCount=$cookies.get("shoppingCartItemsCount")|0;   
+            $scope.shoppingCartItemsCount=$cookies.get("shoppingCartItemsCount")|0;
             $scope.numbers=[1,2,3,4,5];
             // if($cookies.get("shoppingCartItemsCount")){
             //     $scope.shoppingCartItemsCount=$cookies.get("shoppingCartItemsCount");
-            // }         
+            // }
          $scope.fetchBookDetail=function () {  $http.get(baseUrl+"/books/"+$scope.bookId).then(function (resp) { 
                 $scope.book=resp.data;
                 $scope.book.imageAddress=imageBaseUrl+$scope.book.imageAddress;

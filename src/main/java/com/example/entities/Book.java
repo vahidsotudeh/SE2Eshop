@@ -48,6 +48,40 @@ public class Book {
     @Column
     private String category;
 
+    @Column
+    private String ISBN;
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
+
+    @Column
+
+    private String summary;
+
+    @Column
+    private String review;
+
     public String getCategory() {
         return category;
     }
