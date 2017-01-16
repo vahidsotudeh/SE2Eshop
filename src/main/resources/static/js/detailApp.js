@@ -2,7 +2,7 @@ var bookStoreApp = angular.module('detailPage', ['ngCookies','ngRoute']);
 var baseUrl="http://172.20.185.149:8080/api";
 var imageBaseUrl="http://172.20.185.149:8080"; 
 var absoluteUrlfake="file:///C:/Users/Microsoft/IdeaProjects/SE2Eshop/src/main/resources/static/bookDetail.html?";
-var absoluteUrlOrigion="http://localhost:8080/bookDetail.html?";
+var absoluteUrlOrigion="http://172.20.185.149:8080/bookDetail.html?";
 var absoluteUrl=absoluteUrlOrigion;
 
 bookStoreApp.controller('bookDetailController',function bookDetailController($scope,$http,$cookies,$location,$routeParams) {
