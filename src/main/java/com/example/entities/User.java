@@ -31,6 +31,18 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     private Set<Comment> comments = new HashSet<>();
 
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    private Set<Order> orders = new HashSet<>();
+
     public Set<Comment> getComments() {
         return comments;
     }

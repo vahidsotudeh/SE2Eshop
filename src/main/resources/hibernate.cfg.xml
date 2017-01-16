@@ -30,6 +30,9 @@
     <mapping class="com.example.entities.Book"/>
     <mapping class="com.example.entities.User"/>
     <mapping class="com.example.entities.Comment"/>
+    <mapping class="com.example.entities.Order"/>
+    <mapping class="com.example.entities.Payment"/>
+    <mapping class="com.example.entities.DiscountCode"/>
 
   </session-factory>
 </hibernate-configuration>

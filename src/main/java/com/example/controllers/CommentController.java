@@ -13,16 +13,8 @@ import java.util.List;
 /**
  * Created by Amir Shams on 1/16/2017.
  */
-@Path("api/books")
+
 public class CommentController {
 
-    @GET
-    @Path("{id}/comments")
-    @Produces("application/json")
-    public Response getComments(@PathParam("id") String bookId)
-    {
-        List<Comment> comments = CommentDAO.getInstance().getByBookId(bookId);
 
-        return Response.ok(comments).build();
-    }
 }

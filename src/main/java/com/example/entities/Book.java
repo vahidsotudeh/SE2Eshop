@@ -64,6 +64,22 @@ public class Book {
     private Set<Comment> comments = new HashSet<>();
 
 
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "book_order",joinColumns = {
+            @JoinColumn(name = "bookId", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "orderId",
+                    nullable = false, updatable = false) })
+    private Set<Order> orders = new HashSet<>();
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
     public String getISBN() {
         return ISBN;
     }
