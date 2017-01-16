@@ -1,10 +1,15 @@
 package com.example.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JacksonInject;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * Created by Amir Shams on 12/23/2016.
@@ -13,6 +18,8 @@ import java.sql.Date;
 @Table(name="book")
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private String id;
 
     @Column
@@ -51,13 +58,27 @@ public class Book {
     @Column
     private String ISBN;
 
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "book")
+    private Set<Comment> comments = new HashSet<>();
+
+
     public String getISBN() {
         return ISBN;
+    }
+
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
+
 
     public String getSummary() {
         return summary;
@@ -76,7 +97,6 @@ public class Book {
     }
 
     @Column
-
     private String summary;
 
     @Column
@@ -172,8 +192,6 @@ public class Book {
         this.score = score;
     }
 
-
-    @Id
     public String getId() {
         return id;
     }

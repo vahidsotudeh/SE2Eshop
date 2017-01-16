@@ -29,6 +29,7 @@
     <!-- <property title="hbm2ddl.auto">update</property> -->
     <mapping class="com.example.entities.Book"/>
     <mapping class="com.example.entities.User"/>
+    <mapping class="com.example.entities.Comment"/>
 
   </session-factory>
 </hibernate-configuration>

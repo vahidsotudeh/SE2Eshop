@@ -2,6 +2,7 @@ package com.example.config;
 
 import com.example.controllers.BookController;
 import com.example.controllers.BookService;
+import com.example.controllers.CommentController;
 import com.example.controllers.UserService;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletProperties;
@@ -17,6 +18,8 @@ public class JesrseyConfig extends ResourceConfig {
         register(BookService.class);
         register(CORSResponseFilter.class);
         register(UserService.class);
+        register(CommentController.class);
+
         property(ServletProperties.FILTER_FORWARD_ON_404, true);
     }
 
