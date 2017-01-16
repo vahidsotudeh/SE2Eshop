@@ -20,7 +20,7 @@ import java.io.IOException;
  * Created by Amir Shams on 12/14/2016.
  */
 
-@Path("books")
+@Path("api/books")
 public class BookController {
 
     @GET

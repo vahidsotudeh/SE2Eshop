@@ -1,10 +1,13 @@
 package com.example.dao;
 
+import com.example.entities.Book;
 import com.example.entities.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,6 +26,16 @@ public class UserDAO{
 
     }
 
+    public void add(User user)
+    {
+        SessionFactory sessionFactory = Factory.getSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+    }
+
 
     @SuppressWarnings("unchecked")
     public User findByUserName(String username) {
@@ -38,6 +51,60 @@ public class UserDAO{
         } else {
             return null;
         }
+
+    }
+
+    public User getByAccessToken(String accessToken)
+    {
+        Criteria criteria = createCriteria();
+
+        criteria.add(Restrictions.eq("accessToken",accessToken));
+
+        List<User> users = criteria.list();
+
+        if (users.size() > 0) {
+            return users.get(0);
+        } else {
+            return null;
+        }
+    }
+
+
+    public User authorize(String username ,String password)
+    {
+        Criteria criteria = createCriteria();
+
+        criteria.add(Restrictions.eq("username",username));
+        criteria.add(Restrictions.eq("password",password));
+
+        List<User> users = criteria.list();
+
+        if (users.size() > 0) {
+            return users.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    public void setToken(String username,String token)
+    {
+        SessionFactory sessionFactory = Factory.getSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        Criteria criteria = session.createCriteria(User.class);
+
+        criteria.add(Restrictions.eq("username",username));
+
+        List<User> users = criteria.list();
+
+        User user = users.get(0);
+
+        user.setAccessToken(token);
+
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
+        session.close();
 
     }
 

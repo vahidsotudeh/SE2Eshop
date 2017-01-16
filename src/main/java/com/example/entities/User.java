@@ -1,33 +1,68 @@
 package com.example.entities;
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
 public class User {
 
+    @Column
     private String username;
+    @Column
     private String password;
-    private boolean enabled;
-    private Set<UserRole> userRole = new HashSet<UserRole>(0);
+    @Column
+    private String accessToken;
+    @Column
+    private String nameFa;
+    @Column
+    private String nameEn;
+    @Column
+    private String role;
+
+
+    public String getNameFa() {
+        return nameFa;
+    }
+
+    public void setNameFa(String nameFa) {
+        this.nameFa = nameFa;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String userRole) {
+        this.role = userRole;
+    }
+
 
     public User() {
     }
 
-    public User(String username, String password, boolean enabled) {
+    public User(String username, String password, String accessToken, String nameFa, String nameEn, String userRole) {
         this.username = username;
         this.password = password;
-        this.enabled = enabled;
+        this.accessToken = accessToken;
+        this.nameFa = nameFa;
+        this.nameEn = nameEn;
+        this.role = userRole;
     }
 
-    public User(String username, String password,
-                boolean enabled, Set<UserRole> userRole) {
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-        this.userRole = userRole;
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     @Id
@@ -41,32 +76,12 @@ public class User {
         this.username = username;
     }
 
-    @Column(name = "password",
-            nullable = false, length = 60)
     public String getPassword() {
         return this.password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Column(name = "enabled", nullable = false)
-    public boolean isEnabled() {
-        return this.enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    public Set<UserRole> getUserRole() {
-        return this.userRole;
-    }
-
-    public void setUserRole(Set<UserRole> userRole) {
-        this.userRole = userRole;
     }
 
 }

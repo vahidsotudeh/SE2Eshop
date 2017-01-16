@@ -2,7 +2,9 @@ package com.example.controllers;
 
 import com.example.dao.BookDAO;
 import com.example.entities.Book;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -13,6 +15,10 @@ import java.util.List;
  */
 @Path("api")
 public class BookService {
+
+
+    @Autowired
+    HttpSession session;
 
     @GET
     @Path("book-summary")
@@ -26,4 +32,5 @@ public class BookService {
 
         return Response.ok().entity(result).build();
     }
+
 }
