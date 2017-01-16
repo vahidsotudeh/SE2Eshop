@@ -18,6 +18,19 @@ import java.io.IOException;
 public class BookController {
 
     @GET
+    @Path("detail/{id}")
+    @Produces("application/json")
+    public Response getBookDetails(@PathParam("id") String id) throws IOException {
+
+        Book book = BookDAO.getInstance().getById(id);
+
+        if(book == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+
+        return Response.ok().entity(book).build();
+    }
+
+    @GET
     @Path("{id}")
     @Produces("application/json")
     public Response getBook(@PathParam("id") String id) throws IOException {
@@ -27,7 +40,7 @@ public class BookController {
         if(book == null)
             return Response.status(Response.Status.NOT_FOUND).build();
 
-        return Response.ok().entity(book).build();
+        return Response.ok().entity(BookLightDTO.loadFrom(book)).build();
     }
 
     @POST
