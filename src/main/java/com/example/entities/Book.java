@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
 
 /**
  * Created by Amir Shams on 12/23/2016.
@@ -31,6 +32,61 @@ public class Book {
 
     @Column
     private int saleCount;
+
+    @Column
+    private String age;
+
+    @Column
+    private Date publicationDate;
+
+    @Column
+    private int count;
+
+    @Column
+    private boolean hasCommentary;
+
+    @Column
+    private String category;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public boolean isHasCommentary() {
+        return hasCommentary;
+    }
+
+    public void setHasCommentary(boolean hasCommentary) {
+        this.hasCommentary = hasCommentary;
+    }
 
     public int getSaleCount() {
         return saleCount;
