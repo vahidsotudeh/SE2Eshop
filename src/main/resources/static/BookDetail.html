@@ -10,18 +10,22 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>اطلاعات کتاب</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/BKDatailStyle.css" rel="stylesheet">
     <!-- Bootstrap core JavaScript
     ================================================== -->
-
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="js/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/detailApp.js"></script>
 
 </head> 
 
-<body>
+<body ng-app="detailPage" ng-controller="bookDetailController">
 
     <nav id="header" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -70,7 +74,7 @@
             <!--/.navbar-collapse -->
         </div>
     </nav>
-    <div id="content" class="container" style="font-family:'BYekan';">
+    <div id="content" class="container" style="font-family:'BYekan';" >
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-3 col-sm-6 col-xs-6 text-center">طبقه بندی موضوعی :علمی </div>

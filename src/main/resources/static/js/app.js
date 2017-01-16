@@ -9,7 +9,7 @@ var imageBaseUrl="http://172.20.185.149:8080";
  });
 
 bookStoreApp.controller('bookListController',function bookListController($scope,$http,$cookies,$route,$location,$routeParams) {
-         $scope.clickCounter=1;
+     $scope.clickCounter=1;
      $scope.moreLinkClicked=false;
      $scope.manyBooksCounter=[];
      $scope.moreBtnOnClick=function () { 
