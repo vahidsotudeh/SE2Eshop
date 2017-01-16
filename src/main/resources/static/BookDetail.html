@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="img/favicon.ico">
 
     <title>اطلاعات کتاب</title>
 
@@ -57,7 +57,7 @@
                 </div>
                 <div id="shoppingCart" style="float:right">
                     <Button id="shoppingCartBtn" class="btn btn-primary">
-                    1<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                    {{shoppingCartItemsCount}}<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 </Button>
                 </div>
                 <div id="header-menu" class="nav navbar-nav">
@@ -77,10 +77,10 @@
     <div id="content" class="container" style="font-family:'BYekan';" >
         <div class="row">
             <div class="col-md-12">
-                <div class="col-md-3 col-sm-6 col-xs-6 text-center">طبقه بندی موضوعی :علمی </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 text-center">نویسنده : وحید ستوده قره باغ</div>
-                <div class="col-md-3 col-sm-6 col-xs-6 text-center">رده سنی : بزرگ سال</div>
-                <div class="col-md-3 col-sm-6 col-xs-6 text-center">سال انتشار : 1350</div>
+                <div class="col-md-3 col-sm-6 col-xs-6 text-center">طبقه بندی موضوعی :{{ book.category}} </div>
+                <div class="col-md-3 col-sm-6 col-xs-6 text-center">نویسنده : {{book.author}}</div>
+                <div class="col-md-3 col-sm-6 col-xs-6 text-center">رده سنی : {{book.age}}</div>
+                <div class="col-md-3 col-sm-6 col-xs-6 text-center">سال انتشار :{{book.publicationDate}}</div>
             </div>
         </div>
         <div class="row">
@@ -88,25 +88,20 @@
         </div>
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-12" style="margin-top:15px;">
-                    <img src="images/image24.jpg" class="img-responsive" alt="">
+                    <img ng-src="{{book.imageAddress}}" class="img-responsive" alt="">
                 </div>
                 <div class="col-md-9 col-sm-8 col-xs-12">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <h1>بیشعوری در جنگل</h1>
-                            <h4 style="margin-top:25px;">امیر شمس در کنار وحید ستوده</h4>
+                            <h1>{{book.title}}</h1>
+                            <h4 style="margin-top:25px;">{{book.author}}</h4>
                             <img src="images/rating-star.png" style="width:15%;" alt="">
                             <h5 style="margin-top:25px;">خلاصه کتاب</h5>
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                                چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی
-                                مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و
-                                سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت
-                                بیشتری را برای طراحان رایانه ای علی الخصوص طشواری موجود در ارائه راهکارها و شرایط سخت تایپ
-                                به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای
-                                موجود طراحی اساسا مورد استفاده قرار گیرد.
+                            <p>
+                                {{book.summary}}
                             </p>
-                            <h3>موجودی : 10+ در انبار موجود است</h3>
-                            <h3>قیمت : 169,000 | تعداد :
+                            <h3>موجودی : {{book.count}} جلد در انبار موجود است</h3>
+                            <h3>قیمت : {{book.price}} تومان | تعداد :
                                 <form class="form-inline" style="display:inline">
                                     <select class="form-control">
                                         <option>1</option>
