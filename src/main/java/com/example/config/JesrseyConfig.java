@@ -15,6 +15,7 @@ public class JesrseyConfig extends ResourceConfig {
     public JesrseyConfig() {
         register(BookController.class);
         register(BookService.class);
+        register(CORSResponseFilter.class);
         property(ServletProperties.FILTER_FORWARD_ON_404, true);
     }
 

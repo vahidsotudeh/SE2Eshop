@@ -25,5 +25,8 @@
     <!-- DB schema will be updated if needed -->
     <!-- <property title="hbm2ddl.auto">update</property> -->
     <mapping class="com.example.entities.Book"/>
+    <mapping class="com.example.entities.User"/>
+    <mapping class="com.example.entities.UserRole"/>
+
   </session-factory>
 </hibernate-configuration>
