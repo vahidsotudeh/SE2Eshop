@@ -28,7 +28,7 @@ public class User {
     private String role;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     private Set<Comment> comments = new HashSet<>();
 
     public Set<Comment> getComments() {

@@ -2,6 +2,7 @@ package com.example.entities;
 
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cascade;
 
@@ -58,7 +59,8 @@ public class Book {
     @Column
     private String ISBN;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "book")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "book")
     private Set<Comment> comments = new HashSet<>();
 
 
