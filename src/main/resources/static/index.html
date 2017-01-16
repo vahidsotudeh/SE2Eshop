@@ -134,7 +134,7 @@
           <div class="row">
 
               <div ng-repeat="book in bestSellers" class="col-md-2" ng-mouseleave="opt=false" ng-mouseenter="opt=true">
-                    <a href="bookDetail.html?bookId={{book.id}}"><img class="img-responsive" ng-src="{{book.imageAddress}}" />
+                    <a href="BookDetail.html?bookId={{book.id}}"><img class="img-responsive" ng-src="{{book.imageAddress}}" />
                    <div  style="line-height:39px;font-size:20px;background-color:rgba(145,145,145,0.8);position: absolute;top: 0px; right:7.5%;text-align: center; width: 85%;height: 100%;color:black; font-family:'BYekan'" ng-show="opt" id="book{{book.id}}">
                        {{book.title}}<br>
                        قیمت:{{book.price}} هزار تومان <br>
