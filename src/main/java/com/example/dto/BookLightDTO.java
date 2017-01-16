@@ -1,7 +1,6 @@
 package com.example.dto;
 
 import com.example.entities.Book;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -69,7 +68,7 @@ public class BookLightDTO {
     {
         BookLightDTO result = new BookLightDTO();
 
-        result.setId(book.getId());
+        result.setId(book.getBookId());
         result.setAuthor(book.getAuthor());
         result.setPrice(book.getPrice());
         result.setImageAddress(book.getImageAddress());

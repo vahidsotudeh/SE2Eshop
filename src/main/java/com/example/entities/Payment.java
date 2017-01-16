@@ -1,7 +1,6 @@
 package com.example.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.org.apache.xpath.internal.operations.Or;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -14,7 +13,7 @@ import java.sql.Date;
 public class Payment {
 
     @Id
-    private long id;
+    private long orderId;
 
     @Column
     private int price;
@@ -28,16 +27,17 @@ public class Payment {
     @Column
     private String type;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private Order order;
 
-    public long getId() {
-        return id;
+    public long getOrderId() {
+        return orderId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
     }
 
     public int getPrice() {

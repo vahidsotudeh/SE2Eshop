@@ -2,6 +2,7 @@ package com.example.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -12,15 +13,17 @@ import java.util.Set;
  * Created by Amir Shams on 1/16/2017.
  */
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
+    @JsonProperty("id")
+    private long orderId;
 
     @Column
     private Date orderDate;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", nullable = false)
@@ -30,7 +33,7 @@ public class Order {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
 
-    @JsonIgnore
+
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "orders")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Set<Book> books = new HashSet<>();
@@ -51,12 +54,12 @@ public class Order {
         this.payment = payment;
     }
 
-    public long getId() {
-        return id;
+    public long getOrderId() {
+        return orderId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
     }
 
     public Date getOrderDate() {

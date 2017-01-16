@@ -1,10 +1,8 @@
 package com.example.entities;
 
-import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -21,7 +19,8 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private String id;
+    @JsonProperty("id")
+    private String bookId;
 
     @Column
     private String title;
@@ -67,9 +66,8 @@ public class Book {
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "book_order",joinColumns = {
-            @JoinColumn(name = "bookId", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "orderId",
-                    nullable = false, updatable = false) })
+            @JoinColumn(name = "bookId") },
+            inverseJoinColumns = { @JoinColumn(name = "orderId") })
     private Set<Order> orders = new HashSet<>();
 
     public Set<Order> getOrders() {
@@ -210,11 +208,11 @@ public class Book {
         this.score = score;
     }
 
-    public String getId() {
-        return id;
+    public String getBookId() {
+        return bookId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 }

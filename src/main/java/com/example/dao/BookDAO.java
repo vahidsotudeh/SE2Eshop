@@ -29,7 +29,7 @@ public class BookDAO {
     public Book getById(String id)
     {
         Criteria criteria = createCriteria();
-        criteria.add(Restrictions.eq("id",id));
+        criteria.add(Restrictions.eq("bookId",id));
 
         List<Book> books = criteria.list();
         if(books.size() == 0)
