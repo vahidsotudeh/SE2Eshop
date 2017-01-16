@@ -1,17 +1,11 @@
 package com.example.controllers;
 
 
-import com.example.dto.BookDTO;
+import com.example.dto.BookFullDTO;
+import com.example.dto.BookLightDTO;
 import com.example.dao.BookDAO;
 import com.example.entities.Book;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -24,9 +18,9 @@ import java.io.IOException;
 public class BookController {
 
     @GET
-    @Path("{id}")
+    @Path("detail/{id}")
     @Produces("application/json")
-    public Response getBook(@PathParam("id") String id) throws IOException {
+    public Response getBookDetails(@PathParam("id") String id) throws IOException {
 
         Book book = BookDAO.getInstance().getById(id);
 
@@ -36,16 +30,32 @@ public class BookController {
         return Response.ok().entity(book).build();
     }
 
+    @GET
+    @Path("{id}")
+    @Produces("application/json")
+    public Response getBook(@PathParam("id") String id) throws IOException {
+
+        Book book = BookDAO.getInstance().getById(id);
+
+        if(book == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+
+        return Response.ok().entity(BookLightDTO.loadFrom(book)).build();
+    }
+
     @POST
     @Path("add")
     @Consumes("application/json")
-    public Response addBook(BookDTO dto)
+    public Response addBook(BookFullDTO dto)
     {
-        Book book = new Book();
-        book.setId(dto.getId());
-        book.setTitle(dto.getTitle());
+//        Book book = new Book();
+//        book.setId(dto.getId());
+//        book.setTitle(dto.getTitle());
+//
+//        BookDAO.getInstance().add(book);
 
-        BookDAO.getInstance().add(book);
+        //TODO
+        //needs implementation
 
         return Response.ok().build();
     }

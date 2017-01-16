@@ -1,6 +1,7 @@
 package com.example.controllers;
 
 import com.example.dao.BookDAO;
+import com.example.dto.BookLightDTO;
 import com.example.entities.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +30,11 @@ public class BookService {
             @DefaultValue("10") @QueryParam("len") int len,
             @DefaultValue("id") @QueryParam("order") String orderBy) throws IOException {
 
-        List<Book> result = BookDAO.getInstance().getOrderedBooks(start,len,orderBy);
+        List<Book> books = BookDAO.getInstance().getOrderedBooks(start,len,orderBy);
+        List<BookLightDTO> result = new ArrayList<>();
+
+        for(Book book : books)
+            result.add(BookLightDTO.loadFrom(book));
 
         return Response.ok().entity(result).build();
     }

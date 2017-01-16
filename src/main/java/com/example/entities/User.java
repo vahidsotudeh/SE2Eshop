@@ -1,24 +1,43 @@
 package com.example.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
 
-    @Column
+    @Id
+    @JsonIgnore
     private String username;
     @Column
+    @JsonIgnore
     private String password;
     @Column
+    @JsonIgnore
     private String accessToken;
     @Column
     private String nameFa;
     @Column
     private String nameEn;
     @Column
+    @JsonIgnore
     private String role;
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    private Set<Comment> comments = new HashSet<>();
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
 
     public String getNameFa() {
         return nameFa;
@@ -65,9 +84,7 @@ public class User {
         this.accessToken = accessToken;
     }
 
-    @Id
-    @Column(name = "username", unique = true,
-            nullable = false, length = 45)
+
     public String getUsername() {
         return this.username;
     }

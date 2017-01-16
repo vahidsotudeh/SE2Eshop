@@ -1,7 +1,6 @@
 package com.example.dao;
 
 
-import com.example.dto.BookDTO;
 import com.example.entities.Book;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -9,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
