@@ -13,6 +13,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class Factory {
 
     private static Session session = buildSessionFactory().openSession();
+    private static SessionFactory sessionFactory = buildSessionFactory();
     private static SessionFactory buildSessionFactory()
     {
         StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
@@ -25,9 +26,18 @@ public class Factory {
 
         return metadata.getSessionFactoryBuilder().build();
     }
-    public static Session getSessionCueentSession()
+    public static Session   getSessionCueentSession()
     {
+        if(session.isOpen())
+            return session;
+        session = buildSessionFactory().openSession();
+
         return session;
     }
+    public static SessionFactory getSessionFactory()
+    {
+        return sessionFactory;
+    }
+
 
 }

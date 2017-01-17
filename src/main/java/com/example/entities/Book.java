@@ -59,12 +59,12 @@ public class Book {
     private String ISBN;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "book")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "book")
     private Set<Comment> comments = new HashSet<>();
 
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "book")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "book")
     private Set<BookOrderAssignment> bookOrderAssignments = new HashSet<>();
 
     public Set<BookOrderAssignment> getBookOrderAssignments() {

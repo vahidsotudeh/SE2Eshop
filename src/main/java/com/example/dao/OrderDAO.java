@@ -26,15 +26,6 @@ public class OrderDAO {
 
     }
 
-    public void save(Order order)
-    {
-        Session session = Factory.getSessionCueentSession();
-
-        session.beginTransaction();
-        session.save(order);
-        session.getTransaction().commit();
-    }
-
     public List<Order> getAll()
     {
         Criteria criteria = createCriteria();

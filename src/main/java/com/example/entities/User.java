@@ -61,7 +61,7 @@ public class User {
     }
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
     private Set<Comment> comments = new HashSet<>();
 
     public Set<Order> getOrders() {
@@ -73,7 +73,7 @@ public class User {
     }
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
     private Set<Order> orders = new HashSet<>();
 
     public Set<Comment> getComments() {

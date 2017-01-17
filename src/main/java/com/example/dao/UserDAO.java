@@ -2,6 +2,7 @@ package com.example.dao;
 
 
 import com.example.entities.User;
+import com.sun.org.apache.bcel.internal.generic.FADD;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -28,11 +29,14 @@ public class UserDAO{
     public void add(User user)
     {
 
-        Session session = Factory.getSessionCueentSession();
+        SessionFactory sessionFactory = Factory.getSessionFactory();
+        Session session = sessionFactory.openSession();
 
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
+
+        Factory.getSessionCueentSession().close();
     }
 
 
@@ -44,6 +48,8 @@ public class UserDAO{
         criteria.add(Restrictions.eq("username",username));
 
         List<User> users = criteria.list();
+
+        Factory.getSessionCueentSession().close();
 
         if (users.size() > 0) {
             return users.get(0);
@@ -68,6 +74,8 @@ public class UserDAO{
 
         List<User> users = criteria.list();
 
+        Factory.getSessionCueentSession().close();
+
         if (users.size() > 0) {
             return users.get(0);
         } else {
@@ -85,6 +93,8 @@ public class UserDAO{
 
         List<User> users = criteria.list();
 
+        Factory.getSessionCueentSession().close();
+
         if (users.size() > 0) {
             return users.get(0);
         } else {
@@ -93,7 +103,8 @@ public class UserDAO{
     }
     public void setTokenByUsername(String username,String newToken)
     {
-        Session session = Factory.getSessionCueentSession();
+        SessionFactory sessionFactory = Factory.getSessionFactory();
+        Session session = sessionFactory.openSession();
 
         Criteria criteria = session.createCriteria(User.class);
 
@@ -114,7 +125,8 @@ public class UserDAO{
 
     public void setToken(String token,String newToken)
     {
-        Session session = Factory.getSessionCueentSession();
+        SessionFactory sessionFactory = Factory.getSessionFactory();
+        Session session = sessionFactory.openSession();
 
         Criteria criteria = session.createCriteria(User.class);
 
@@ -139,7 +151,6 @@ public class UserDAO{
     private Criteria createCriteria()
     {
         Session session = Factory.getSessionCueentSession();
-
         return session.createCriteria(User.class);
     }
 }

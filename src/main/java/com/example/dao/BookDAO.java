@@ -34,10 +34,12 @@ public class BookDAO {
         criteria.add(Restrictions.eq("bookId",id));
 
         List<Book> books = criteria.list();
+
         if(books.size() == 0)
             return null;
-
-        return (Book) criteria.list().get(0);
+        Book book = (Book) criteria.list().get(0);
+        Factory.getSessionCueentSession().close();
+        return book;
     }
 
     public List<Book> getOrderedBooks(int start, int len, String orderBy)
@@ -46,38 +48,38 @@ public class BookDAO {
 
         criteria.addOrder(Order.desc(orderBy)).setFirstResult(start).setMaxResults(len);
 
-        return criteria.list();
+        List<Book> books = criteria.list();
+
+        Factory.getSessionCueentSession().close();
+
+        return books;
     }
+//
+//    public void add(Book book)
+//    {
+//        SessionFactory sessionFactory = Factory.getSessionFactory();
+//        Session session = sessionFactory.openSession();
+//
+//        session.beginTransaction();
+//        session.save(book);
+//        session.getTransaction().commit();
+//
+//    }
 
-    public void add(Book book)
-    {
-        Session session = Factory.getSessionCueentSession();
-
-        session.beginTransaction();
-        session.save(book);
-        session.getTransaction().commit();
-
-    }
-
-    public void save(List<Book> books)
-    {
-        Session session = Factory.getSessionCueentSession();
-
-        session.beginTransaction();
-        for(Book book : books)
-            session.update(book);
-        session.getTransaction().commit();
-    }
 
     public List<Book> getBooks(ArrayList<String> bookIds)
     {
         Criteria criteria = createCriteria();
         criteria.add(Restrictions.in("bookId",bookIds));
 
-        return criteria.list();
+        List<Book> books = criteria.list();
+        Factory.getSessionCueentSession().close();
+
+        return books;
     }
     private Criteria createCriteria()
     {
+
         Session session = Factory.getSessionCueentSession();
 
         return session.createCriteria(Book.class);

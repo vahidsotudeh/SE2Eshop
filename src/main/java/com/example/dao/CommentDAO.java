@@ -36,7 +36,11 @@ public class CommentDAO {
 
         criteria.add(Restrictions.eq("book.id",bookId));
 
-        return criteria.list();
+        List<Comment> list = criteria.list();
+
+        Factory.getSessionCueentSession().close();
+
+        return list;
     }
 
     public List<Comment> getAll()

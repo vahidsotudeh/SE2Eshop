@@ -28,7 +28,7 @@ public class Payment {
     private String type;
 
     @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn
     private Order order;
 

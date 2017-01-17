@@ -27,15 +27,16 @@ public class BookOrderAssignmentDAO {
 
     }
 
-    public void save(ArrayList<BookOrderAssignment> assignments)
-    {
-        Session session = Factory.getSessionCueentSession();
-
-        session.beginTransaction();
-        for(BookOrderAssignment assignment : assignments)
-            session.save(assignment);
-        session.getTransaction().commit();
-    }
+//    public void save(ArrayList<BookOrderAssignment> assignments)
+//    {
+//        SessionFactory sessionFactory = Factory.getSessionFactory();
+//        Session session = sessionFactory.openSession();
+//
+//        session.beginTransaction();
+//        for(BookOrderAssignment assignment : assignments)
+//            session.save(assignment);
+//        session.getTransaction().commit();
+//    }
 
     public List<BookOrderAssignment> getAll()
     {

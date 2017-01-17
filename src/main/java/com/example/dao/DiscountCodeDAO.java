@@ -41,6 +41,8 @@ public class DiscountCodeDAO {
 
         List<DiscountCode> codes = criteria.list();
 
+        Factory.getSessionCueentSession().close();
+
         if(codes.size() == 0)
             return 0;
         else

@@ -4,6 +4,7 @@ import com.example.dao.*;
 import com.example.dto.OrderDTO;
 import com.example.dto.SingleOrderDTO;
 import com.example.entities.*;
+import org.hibernate.Session;
 
 import javax.ws.rs.core.Response;
 import java.sql.Date;
@@ -74,17 +75,18 @@ public class OrderServiceHandler {
         for(BookOrderAssignment assignment : bookOrderAssignments)
             assignment.setOrder(customerOrder);
 
-        Factory.getSessionCueentSession().beginTransaction();
+        Session session = Factory.getSessionFactory().openSession();
+        session.beginTransaction();
 
         for(Book book : books)
-            Factory.getSessionCueentSession().update(book);
+            session.update(book);
 
-        Factory.getSessionCueentSession().save(customerOrder);
+        session.save(customerOrder);
 
         for(BookOrderAssignment assignment : bookOrderAssignments)
-            Factory.getSessionCueentSession().save(assignment);
+            session.save(assignment);
 
-        Factory.getSessionCueentSession().getTransaction().commit();
+        session.close();
 
         return Response.ok(totalPrice - discountAmount).build();
 
