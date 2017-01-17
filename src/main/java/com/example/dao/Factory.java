@@ -28,7 +28,7 @@ public class Factory {
     }
     public static Session   getSessionCueentSession()
     {
-        if(session.isOpen())
+        if(session != null && session.isOpen())
             return session;
         session = buildSessionFactory().openSession();
 
@@ -41,7 +41,7 @@ public class Factory {
 
     public static void closeSession()
     {
-        if(session.isOpen())
+        if(session != null && session.isOpen())
             session.close();
     }
 

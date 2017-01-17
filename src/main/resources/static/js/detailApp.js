@@ -3,7 +3,7 @@ var baseUrl="http://localhost:8080/api";
 var imageBaseUrl="http://localhost:8080";
 var absoluteUrlfake="file:///F:/bookstore/SE2Eshop/src/main/resources/static/bookDetail.html?";
 var absoluteUrlOrigion="http://localhost:8080/bookDetail.html?";
-var absoluteUrl=absoluteUrlfake;
+var absoluteUrl=absoluteUrlOrigion;
 
 bookStoreApp.controller('bookDetailController',function bookDetailController($scope,$http,$cookies,$location,$routeParams) {
             $scope.currUrl=$location.absUrl().replace(absoluteUrl,"").replace("#!/","");
@@ -15,7 +15,7 @@ bookStoreApp.controller('bookDetailController',function bookDetailController($sc
                 $scope.book.imageAddress=imageBaseUrl+$scope.book.imageAddress;
 
          },function (err) { 
-             alert("error");
+             // alert("error");
           });
         }
         $scope.fetchBookDetail();

@@ -21,11 +21,11 @@ bookStoreApp.controller('bookListController',function bookListController($scope,
             for(var i=0;i<$scope.manyBooks.length;i++){
                   $scope.manyBooks[i].imageAddress=imageBaseUrl+$scope.manyBooks[i].imageAddress;
             }
-            alert($scope.clickCounter);
+            // alert($scope.clickCounter);
             $scope.manyBooksCounter[$scope.clickCounter-1]=$scope.manyBooks;
-            alert(data.data);
+            // alert(data.data);
           },function (error) { 
-            alert("a");
+            // alert("a");
            });
 
       }

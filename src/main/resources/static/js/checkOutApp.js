@@ -3,7 +3,7 @@ var baseUrl="http://localhost:8080/api";
 var imageBaseUrl="http://localhost:8080";
 var absoluteUrlfake="file:///F:/bookstore/SE2Eshop/src/main/resources/static/bookDetail.html?";
 var absoluteUrlOrigion="http://localhost:8080/bookDetail.html?";
-var absoluteUrl=absoluteUrlfake;
+var absoluteUrl=absoluteUrlOrigion;
 
 bookStoreApp.controller('checkOutPageController',function checkOutPageController($scope,$http,$cookies,$location,$routeParams) {
     $scope.discount=0;
@@ -112,7 +112,7 @@ bookStoreApp.controller('checkOutPageController',function checkOutPageController
                     $scope.user=resp.data;
                     $scope.isLogin=true;
                  },function (param) {
-                     alert("vay!!");
+                     // alert("vay!!");
                    });
               },function (error) { 
                 alert("نام کاربری یا رمز عبور نادرست است");
@@ -125,7 +125,7 @@ bookStoreApp.controller('checkOutPageController',function checkOutPageController
                         $scope.user=resp.data;
                         $scope.isLogin=true;
                  },function (param) {
-                     alert("vay!!");
+                     // alert("vay!!");
                    });
             }
             $scope.logOut=function () { 
@@ -134,7 +134,7 @@ bookStoreApp.controller('checkOutPageController',function checkOutPageController
                         $cookies.remove("userToken");
                         $scope.isLogin=false;
                  },function (param) {
-                     alert("vay!!");
+                     // alert("vay!!");
                    });
              }
 
