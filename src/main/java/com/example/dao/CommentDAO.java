@@ -39,6 +39,13 @@ public class CommentDAO {
         return criteria.list();
     }
 
+    public List<Comment> getAll()
+    {
+        Criteria criteria = createCriteria();
+
+        return criteria.list();
+    }
+
     private Criteria createCriteria()
     {
         SessionFactory sessionFactory = Factory.getSessionFactory();

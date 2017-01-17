@@ -1,8 +1,9 @@
 package com.example.controllers;
 
-import com.example.dao.CommentDAO;
+import com.example.dao.BookDAO;
 import com.example.dao.OrderDAO;
-import com.example.entities.Comment;
+import com.example.dto.BookLightDTO;
+import com.example.entities.Book;
 import com.example.entities.Order;
 
 import javax.ws.rs.GET;
@@ -14,19 +15,18 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Amir Shams on 1/16/2017.
+ * Created by Amir Shams on 1/17/2017.
  */
 @Path("api")
-public class CommentController {
+public class OrderController {
 
     @GET
-    @Path("comments")
+    @Path("orders")
     @Produces("application/json")
-    public Response getComments() throws IOException {
+    public Response getOrders() throws IOException {
 
-        List<Comment> comments = CommentDAO.getInstance().getAll();
+        List<Order> orders = OrderDAO.getInstance().getAll();
 
-        return Response.ok().entity(comments).build();
+        return Response.ok().entity(orders).build();
     }
-
 }
