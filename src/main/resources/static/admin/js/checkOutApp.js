@@ -1,8 +1,8 @@
 var bookStoreApp = angular.module('checkOutPage', ['ngCookies','ngRoute']);
-var baseUrl="http://192.168.43.191:8080/api";
-var imageBaseUrl="http://192.168.43.191:8080"; 
+var baseUrl="http://172.20.185.149:8080/api";
+var imageBaseUrl="http://172.20.185.149:8080"; 
 var absoluteUrlfake="file:///C:/Users/Microsoft/IdeaProjects/SE2Eshop/src/main/resources/static/bookDetail.html?";
-var absoluteUrlOrigion="http://192.168.43.191:8080/bookDetail.html?";
+var absoluteUrlOrigion="http://172.20.185.149:8080/bookDetail.html?";
 var absoluteUrl=absoluteUrlfake;
 
 bookStoreApp.controller('checkOutPageController',function checkOutPageController($scope,$http,$cookies,$location,$routeParams) {
@@ -172,7 +172,7 @@ bookStoreApp.controller('checkOutPageController',function checkOutPageController
                                   //  var parameter = JSON.stringify({username:$scope.username, password:$scope.password});
                       var myarr=[];
                           for (var seeder=0;seeder < $scope.bookDetails.length;seeder++){
-                            //   alert($scope.bookDetails[seeder].id);
+                              alert($scope.bookDetails[seeder].id);
                                 myarr[seeder] = {
                                     id:   $scope.bookDetails[seeder].id,
                                     count: $scope.bookDetails[seeder].count
@@ -180,32 +180,19 @@ bookStoreApp.controller('checkOutPageController',function checkOutPageController
                             }
                       var booksInOrder=JSON.stringify(myarr);
                       var paymentOrder=JSON.stringify({token:$cookies.get("userToken"),items:myarr,discountCode:$scope.discountCode});
-                     $.ajax({
-                        url: baseUrl+"/orderBooks",
-                        type: "POST",
-                        data: paymentOrder,
-                        contentType: "application/json",
-                        complete: function (param) { 
-                                    $http.get(baseUrl+"/orderStat?token="+$scope.token).then(function (resp) { 
-                                        alert("سفارش ثبت شده");
-                                        window.location.replace("payment.html");
-                                     },function (errr) {
-                                         
-                                      });
-                         }
-                    });
-
-                    //  $http({
-                    //         url: baseUrl+"/orderBooks",
-                    //         method: "POST",
-                    //         data: paymentOrder,
-                    //         headers: {'Content-Type': 'application/json'}
-                    //     }).then(function (resp) { 
-                    //          alert("resp.data");
-                    //       },function (error) { 
-                    //             // alert("err");
-    
-                    //        });
+                     $http({
+                            url: baseUrl+"/orderBooks",
+                            method: "POST",
+                            data: paymentOrder,
+                            headers: {'Content-Type': 'application/json'}
+                        }).then(function (resp) { 
+                            //  alert(resp.data);
+                          },function (error) { 
+                                alert("err");
+                                $timeout(function(){
+                                    $http.get(baseUrl+"/orderStat")
+                                }, 100);       
+                           });
 
                   }
                }

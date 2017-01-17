@@ -22,7 +22,7 @@
 <body id="Body" class="pagebody"  ng-app="paymentPage" ng-controller="paymentPageController">
     <script src="js/ScriptPayment"></script>
 
-    <form method="POST" action="https://www.payping.ir/thanks/sep" id="CancelForm" name="CancelForm" autocomplete="off">
+    <form method="POST" action="CheckOut.html" id="CancelForm" name="CancelForm" autocomplete="off">
         <input name="State" id="State" value="Canceled By User" type="hidden">
         <input name="StateCode" id="StateCode" value="-1" type="hidden">
         <input name="ResNum" value="152550" type="hidden">
@@ -33,7 +33,7 @@
         <input name="RRN" value="" type="hidden">
          <input name="SecurePan" value="" type="hidden">
     </form>
-    <form method="post" action="payment.aspx" id="frmMain" autocomplete="off">
+    <form method="post" action="trackingCode.html" id="frmMain" autocomplete="off">
 <div class="aspNetHidden">
 <input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
 <input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
@@ -249,7 +249,7 @@ Sys.WebForms.PageRequestManager._initialize('ctl00$mainContent$PaymentService1$s
                 <div class="form-group col">
                     <label class="control-label col-md-2 col-xs-12 col-sm-2"></label>
                     <div class="col-md-8 col-xs-12 col-sm-4">
-                        <input name="ctl00$mainContent$PaymentService1$PayButton1" value="پرداخت" onclick='isValid();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$mainContent$PaymentService1$PayButton1", "", false, "", "Payment.aspx", false, false))' id="mainContent_PaymentService1_PayButton1" class="btn btn-primary payment btn-payment" type="submit">
+                        <input ng-click="completePayment()" value="پرداخت"class="btn btn-primary payment btn-payment">
                         <input id="btnPayProgreess" value="در حال پردازش" class="btn btn-success payment" disabled="disabled" type="button">
                         <input name="Cancel" id="cancel" class="btn btn-danger" onclick="document.getElementById('CancelForm').submit()" value="انصراف" type="button">
                     </div>
@@ -291,7 +291,7 @@ Sys.WebForms.PageRequestManager._initialize('ctl00$mainContent$PaymentService1$s
                 <i class="glyphicon glyphicon-certificate"></i>
                 <span class="editor-label">مبلغ قابل پرداخت : </span>
                 <font color="#8b0000">
-                <span id="mainContent_PaymentService1_lbl_amount" class="amount">{{}} هزارتومان</span>
+                <span id="mainContent_PaymentService1_lbl_amount" class="amount">{{order.price}} هزارتومان</span>
              </font>
             </div>
         </div>

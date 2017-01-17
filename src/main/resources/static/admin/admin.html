@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>خانه کتاب </title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScriptb
+    ================================================== -->
+    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>-->
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+    <!--<script type="text/javascript" src="js/angular-mocks.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-scenario.js"></script>-->
+    <script type="text/javascript" src="js/angular-cookies.min.js"></script>
+    <!--<script type="text/javascript" src="js/angular-loader.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-messages.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-animate.min.js"></script>-->
+    <script type="text/javascript" src="js/angular-resource.min.js"></script>
+    <!--<script type="text/javascript" src="js/angular-aria.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-message-format.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/angular-parse-ext.min.js"></script>-->
+    <script src="js/adminApp.js" type="text/javascript"></script>
+
+
+    
+  </head>
+
+  <body ng-app="mainPage" ng-controller="bookListController">
+    <nav id="header" class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+            <div style="float:right;margin-top:10px" >
+            <div style="float:right;margin-top:10px;margin-left:20px"><img style="" src="images/book.png"></div>
+             <div style="float:right;font-family:'BYekan';color:white;font-size:65px" >خانه کتاب</div>
+            </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form id="searchGroup" class="navbar-form navbar-right">
+            <div class="form-group">
+                <input id="searchTxt" ng-model="name" type="text" placeholder="جستجو ..." class="form-control">
+                <button type="submit" id="searchBtn" class="btn btn-success">  
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+            </div>
+          </form>
+            <div id="loginSignUp">
+                <a class="modal_trigger" href="#modal">ثبت نام</a>
+                |
+                <a class="modal_trigger" href="#modal">ورود</a>
+            </div>
+            <div id="shoppingCart" style="float:right">
+                <Button id="shoppingCartBtn" class="btn btn-primary">
+                    1<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                </Button>
+            </div>
+            <div id="header-menu" class="nav navbar-nav">
+                <li><a href="#">صفحه اصلی</a></li>
+                <li><a href="#">طبقه بندی موضوعی</a></li>
+                <li><a href="#">نویسندگان</a></li>
+                <li><a href="#">رده های سنی</a></li>
+                <li><a href="#">سال انتشار</a></li>
+                <li><a href="#" style="color:#fbc02d;">تقریظ های رهبری</a></li>
+                
+            </div>
+            
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+        <div class="container" style="margin-top: 140px;font-family: 'BYekan'">
+        <div class="container" >
+           <h1 class="text-center"> افزودن کتاب</h1>
+            <form>
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">نام کتاب</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">نویسنده</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">سال انتشار</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">تعداد</label>
+                    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="">
+                </div>                
+                <div class="form-group">
+                    <label for="exampleInputPassword1">دسته بندی </label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                </div>                
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">رده سنی  </label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                </div>                  
+                <div class="form-group">
+                    <label for="exampleInputPassword1">خلاصه </label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">نقد و بررسی </label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                </div>                                  
+                <div class="form-group">
+                    <label for="exampleInputPassword1">شابک  </label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                </div>                                                    
+                <div class="form-group">
+                    <label for="exampleInputFile">تصویر کتاب</label>
+                    <input type="file" id="exampleInputFile">
+                    <p class="help-block">حجم عکس کمتر از 2 مگابایت باشد</p>
+                </div>
+                
+                <button type="submit" class="btn btn-default">ارسال</button>
+            </div>
+            </form>   
+        </div>
+        <div class="container text-center">
+            <h1>لیست خرید های انجام شده</h1>
+        </div>
+        <div class="container">
+                    <div class="row" style="margin-bottom:20px;margin-top:20px;font-size:18px;">
+            <div class="col-md-2 col-sm-2 col-xs-2 text-center ">
+                  نام خریدار
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                لیست کتاب های خریداری شده
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+                قیمت کل
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+                تاریخ خرید
+            </div>
+            <div class="col-md-1 col-sm-1 col-xs-1 text-center">وضعیت فعلی</div>
+            <div class="col-md-1 col-sm-1 col-xs-1 text-center">تغییر وضعیت</div>
+        </div>
+        <div ng-repeat="book in bookDetails" class="row item">
+            <div class="col-md-2 col-sm-2 col-xs-2 text-center bordered">
+                {{book.title}}
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                {{book.price}} هزارتومان 
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+                {{book.count}}
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+                {{book.count*book.price}} هزارتومان
+            </div>
+            <div class="col-md-1 col-sm-1 col-xs-1 text-center"><button class="btn" ng-click="removeItem(book.id)"> تایید</button><button class="btn" ng-click="removeItem(book.id)"> رد</button></div> 
+        </div>   
+
+        </div>
+        </div>            
+      <hr>
+
+      <footer>
+        <div style="padding:20px;" class="container-fluid navbar-inverse">
+            <div class="col-md-6">
+                <div class="col-md-3 col-sm-12">
+                <img src="images/samandehi.png" />
+                </div>
+                <div class="col-md-3 col-sm-12">
+                <img src="images/e-namad.png" />
+                </div>
+                <div id="aboutUS" class="col-md-6">
+                    <h3 id="aboutUSTitle"> درباره خانه کتاب</h3>
+                    <h5>فروش عمده و سازمانی</h5>
+                    <h5>ثبت نام تامین کنندگان</h5>
+                    <h5>زنجیره تامین کتاب</h5>
+                    <h5>همکاری با ما</h5>
+                    <h5>درباره ی ما</h5>
+                </div>
+                <div  class="col-md-12">
+                    <h6 id="contactUs">
+                        نقشه سایت | فرصت های شغلی | تماس با ما
+                    </h6>
+
+                </div>
+            </div>    
+            <div id="followUs" class="col-md-6">
+                <h3 id="followUsTitle">خانه کتاب را دنبال کنید</h3>
+                <h6>
+                    <img src="images/facebook.png"/>
+                    <img src="images/telegram.png"/>
+                    <img src="images/twitter.png"/>
+                </h6>
+                 <h6>
+                    <img src="images/instagram.png"/>
+                    <img src="images/aparat.png"/>
+                    <img src="images/linkedin.png"/>
+                </h6>
+                <h6 id="emailTel">
+                    info@khaneketab.ir | +98 9876 1234
+                </h6>
+            </div>
+            <div id="allRightsReserved" class="col-md-12">
+                استفاده از مطالب فروشگاه اینترنتی خانه کتاب فقط برای مقاصد غیر تجاری و با ذکر منبع بلامانع است، کلیه حقوق این سایت متعلق به شرکت سیستم گستران بهشتی می باشد.
+            </div>
+        </div>
+      </footer>
+      	<div id="modal" class="popupContainer" style="display:none;">
+		<header class="popupHeader">
+			<span class="header_title">ورود</span>
+			<span class="modal_close"><i class="fa fa-times"></i></span>
+		</header>
+		
+		<section class="popupBody">
+			<!-- Social Login -->
+			<div class="social_login">
+				<div class="">
+					<a href="#" class="social_box fb">
+						<span class="icon"><i class="fa fa-facebook"></i></span>
+						<span class="icon_title">اتصال با فیسبوک</span>
+						
+					</a>
+
+					<a href="#" class="social_box google">
+						<span class="icon"><i class="fa fa-google-plus"></i></span>
+						<span class="icon_title">اتصال با گوگل</span>
+					</a>
+				</div>
+
+				<div class="centeredText">
+					<span>یا از حساب کاربری خود  استفاده کنید</span>
+				</div>
+
+				<div class="action_btns">
+					<div class="one_half"><a href="#" id="login_form" class="btn">ورود</a></div>
+					<div class="one_half last"><a href="#" id="register_form" class="btn">ثبت نام</a></div>
+				</div>
+			</div>
+
+			<!-- Username & Password Login form -->
+			<div class="user_login">
+				<form ng-submit="login()">
+					<label>ایمیل / نام کاربری</label>
+					<input type="text" />
+					<br />
+
+					<label>رمز عبور</label>
+					<input type="password" />
+					<br />
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> برگشت</a></div>
+						<div class="one_half last"><input type="submit" value="ورود" class="btn btn_red"/></div>
+					</div>
+				</form>
+
+				<a href="#" class="forgot_password">رمز خود را فراموش کرده اید؟</a>
+			</div>
+
+			<!-- Register Form -->
+			<div class="user_register">
+				<form>
+					<label>نام و نام خانوادگی</label>
+					<input type="text" />
+					<br />
+
+					<label>آدرس ایمیل</label>
+					<input type="email" />
+					<br />
+
+					<label>رمز عبور </label>
+					<input type="password" />
+					<br />
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> برگشت</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">ثبت نام</a></div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+    </div> <!-- /container -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js" type="application/javascript"></script>
+    <script src="js/jquery.easing.1.31.js" type="text/javascript"></script>
+    <script src="js/jquery.fitvids.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+
+    <script src="js/script.js" type="text/javascript"></script>
+
+  </body>
+</html>

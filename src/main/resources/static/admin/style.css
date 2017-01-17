@@ -1,0 +1,240 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic);
+@font-face {
+    font-family: 'BYekan';
+    src:url("fonts/BYekan.ttf"),
+    url("fonts/BYekan.woff"),
+    url("fonts/BYekan.eot");
+}
+
+
+#searchTxt{
+    width: 450px !important;
+    font-family: "BYekan";
+    font-size: 25px;
+    text-align: right;
+    border-radius: 0px 30px 30px 0px;
+    height: 40px;
+    margin-left: -5px !important;
+}
+#header{
+    height: 120px;
+    background-color: #222222;
+}
+#navbar{
+    margin-top: 30px;
+}
+#searchGroup{
+        margin-right: 25px !important;
+}
+#searchBtn{
+    border-radius: 30px 0px 0px 30px;
+    background: #fbc02d;
+    border-color: #fbc02d;
+    color: black;
+    font-size: 20px;
+    padding: 4.5px 10px 5px 10px;
+    margin-right: 0px;
+
+}
+#loginSignUp{
+    font-size: 18px;
+    color: aliceblue;
+    font-family: "BYekan";
+    top: 10px;
+    left: 50px;
+    position: fixed;
+    float: right;
+    
+}
+#shoppingCart{
+    position: fixed;
+    left: 80px;
+    top: 40px;
+    font-family: "BYekan";
+    
+}
+#shoppingCartBtn{
+    border-radius: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 1px;
+    font-size: 20px;
+    background-color: #fbc02d;
+    color: black;
+    border-color: #fbc02d;
+    
+}
+a{
+ color: aliceblue;   
+} 
+#myCarousel{
+    position: relative;
+    margin-top: 120px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.item img{
+    width: 100%;
+}
+#middleBox{
+    margin-top: 20px;
+}
+.img-responsive {
+   display: inline-block !important;
+}
+#chosenBooks,#chosenBooksTitle{
+    background-color: darkgray;
+    margin-right:8% ;
+    margin-left: 8%;
+}
+#chosenBooksTitle{
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-family: "BYekan";
+    font-size: 22px;
+}
+#aboutUSTitle{
+    margin-top: 0;
+    color: #e1ab18;
+}
+#aboutUS{
+    color: white;
+    padding-right: 40px;
+    font-family: "BYekan";    
+    
+}
+#followUs.col-md-6{
+    padding-left: 90px !important;
+    text-align: left;
+}
+#followUsTitle{
+    font-family: "BYekan";
+        margin-top: 0;
+    color: #e1ab18;
+}
+#followUs  img{
+    margin: 0 9px;
+}
+#emailTel{
+    font-family: "BYekan";
+    font-size: 15px;
+    padding-top: 10px;
+    color: white;
+}
+#contactUs{
+    font-size: 15px;
+    font-family: "BYekan";
+    margin-top: 0;
+    color: white;
+}
+#allRightsReserved{
+    margin-top: 15px;
+    text-align: center;
+    font-family: "BYekan";
+    font-size: 14px;
+    color: white;
+    
+}
+#header-menu{
+
+    font-family: "BYekan";
+    font-size: 20px;
+    margin-top: -25px;
+    margin-right: 12%;
+}
+@media only screen and (max-width: 768px) {
+.collapsing, .in {background-color: #555;}
+.collapsing ul li a, .in ul li a {color: #e1ab18!important;}
+.collapsing ul li a:hover, .in ul li a:hover {color: #f1f1f1!important;}
+}
+@media (min-width: 768px) and (max-width: 1000px) {
+   .collapse {
+       display: none !important;
+   }
+}
+
+body {font-family: 'Source Sans Pro', sans-serif; font-size: 14px; color: #666;}
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+.popupContainer{
+	position:absolute;
+	width:330px;
+	height: auto;
+	left:45%;
+	top:80px;
+	background: #FFF;
+}
+
+.modal_trigger {margin:100px auto; width:100px;}
+
+.btn {padding:10px 20px; background: #F4F4F2;}
+.btn_red {background: #ED6347; color: #FFF;}
+
+.btn:hover {background: #E4E4E2;}
+.btn_red:hover {background: #C12B05;}
+
+a.btn {color:#666; text-align: center; text-decoration: none;}
+a.btn_red {color: #FFF;}
+
+.one_half {width:50%; display: block; float:left;}
+.one_half.last {width:45%; margin-left:5%;}
+
+/* Popup Styles*/
+.popupHeader {font-size:16px; text-transform: uppercase;text-align: center}
+.popupHeader {background:#F4F4F2; position:relative; padding:10px 20px; border-bottom:1px solid #DDD; font-weight:bold;}
+.popupHeader .modal_close {position: absolute; right: 0; top:0; padding:10px 15px; background:#E4E4E2; cursor: pointer; color:#aaa; font-size:16px;}
+
+.popupBody {padding:20px;}
+
+
+/* Social Login Form */
+.social_login {}
+.social_login .social_box {display:block; clear:both; padding:10px; margin-bottom: 10px; background: #F4F4F2; overflow: hidden; text-align: right}
+.social_login .icon {display:block; width:10px; padding:5px 10px; margin-right: 10px; float:left; color:#FFF; font-size:16px; text-align: center;} 
+.social_login .fb .icon {background:#3B5998;}
+.social_login .google .icon {background:#DD4B39;}
+.social_login .icon_title {display:block; padding:5px 0; float:right; font-weight: bold; font-size: 16px; color:#777;}
+.social_login .social_box:hover {background: #E4E4E2;}
+
+.centeredText {text-align: center; margin: 20px 0; clear: both; overflow: hidden; text-transform: uppercase;}
+
+.action_btns {clear:both; overflow: hidden;}
+.action_btns a {display: block;}
+
+/* User Login Form */
+.user_login {display: none;}
+.user_login label {display: block; margin-bottom:5px;}
+.user_login input[type="text"], .user_login input[type="email"], .user_login input[type="password"] {display: block; width:90%; padding: 10px; border:1px solid #DDD; color:#666;}
+.user_login input[type="checkbox"] {float:left; margin-right:5px;}
+.user_login input[type="checkbox"]+label {float:left;}
+
+.user_login .checkbox {margin-bottom: 10px; clear: both; overflow: hidden;}
+.forgot_password {display:block; margin: 20px 0 10px; clear: both; overflow: hidden; text-decoration: none; color:#ED6347;}
+
+/* User Register Form */
+.user_register {display: none;}
+.user_register label {display: block; margin-bottom:5px;}
+.user_register input[type="text"], .user_register input[type="email"], .user_register input[type="password"] {display: block; width:90%; padding: 10px; border:1px solid #DDD; color:#666;}
+.user_register input[type="checkbox"] {float:left; margin-right:5px;}
+.user_register input[type="checkbox"]+label {float:left;}
+
+.user_register .checkbox {margin-bottom: 10px; clear: both; overflow: hidden;}
+
+.hoverImagetext{ width:340px; height:217px; background:#FFF; opacity:0; }
+.hoverImage:hover .hoverImagetext { opacity:0.6; text-align:justify; color:#000000; font-size:20px; font-weight:700; font-family:"Times New Roman", Times, serif; padding:10px; }
+.textOverBooks{}
+.ng-hide {
+		transform-origin: 100% 213.5px !important; /* half of height */
+	}

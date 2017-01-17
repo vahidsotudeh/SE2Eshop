@@ -5,17 +5,19 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<title>درگاه پرداخت اینترنتی پرداخت الکترونیک سامان</title>
 	<link href="css/tracking_styles.css" rel="stylesheet">
-	<script>
-	try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}
-	</script>
+	    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="js/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/trackingApp.js"></script>
 </head>
-<body class="pagebody" id="Body">
+<body class="pagebody" id="Body" ng-app="trackingPage" ng-controller="trackingPageController">
 	<script src="js/ScriptPayment1">
 	</script>
-	<form action="https://evoucher.mci.ir/Evoucher/finishOrder/saman" autocomplete="off" id="CancelForm" method="post" name="CancelForm">
+	<form action="CheckOut.html" autocomplete="off" id="CancelForm" method="post" name="CancelForm">
 		<input id="State" name="State" type="hidden" value="OK"><input id="StateCode" name="StateCode" type="hidden" value="0"><input name="ResNum" type="hidden" value="182204263065"><input name="MID" type="hidden" value="10129134"><input name="RefNum" type="hidden" value="qUEAipOyoOUD49VJvu8AAbOzv6rotJ"><input name="CID" type="hidden" value="5DA7418522B8C4CC85FC914D8E140EB0A829345149B0E2C404E8B48FD994B5B1"><input name="TRACENO" type="hidden" value="755068"><input name="RRN" type="hidden" value="5061444808"><input name="SecurePan" type="hidden" value="610433******5736">
 	</form>
-	<form action="SuccessPayment.aspx" autocomplete="off" id="frmMain" method="post" name="frmMain">
+	<form action="index.html" autocomplete="off" id="frmMain" method="post" name="frmMain">
 		<div class="aspNetHidden">
 			<input id="__VIEWSTATE" name="__VIEWSTATE" type="hidden" value="/wEPDwUJLTQzMzE0OTY3DxYCHgpTZXNzaW9uS2V5BQs5TW9VSlo4XzFBZxYCZg9kFgICAw9kFgICAQ9kFgICAQ9kFgICAQ9kFgYCAQ8PFgIeB0VuYWJsZWRoZGQCAg9kFhgCAQ8PFgIeBFRleHQFCNmF2YjZgdmCFgIeBXN0eWxlBQxjb2xvcjpncmVlbjtkAgMPDxYCHwIFBTksNTAwZGQCBQ8PFgIfAgUQNjEwNDMzKioqKioqNTczNmRkAgcPDxYCHwIFD9io2KfZhtqpINmF2YTYqmRkAgkPDxYCHwIFBjc1NTA2OGRkAgsPDxYCHwIFCDEwMTI5MTM0ZGQCDQ8PFgIfAgUg2LTYp9ix2pgg2YfZhdix2KfZhyDYp9mI2YQgVG9wVXBkZAIPDw8WAh8CBQZtY2kuaXJkZAIRDw8WAh8CBQUwNjowOGRkAhMPDxYCHwIFCjEzOTUvMTAvMjhkZAIVDw8WAh8CBR5xVUVBaXBPeW9PVUQ0OVZKdnU4QUFiT3p2NnJvdEpkZAIXDw8WAh8CBQo1MDYxNDQ0ODA4ZGQCAw8PFgIfAgUMMTgyMjA0MjYzMDY1ZGRk">
 		</div>
@@ -71,7 +73,7 @@
 								</div><br>
 								<span class="editor-label"></span>
 								<div class="pull-left">
-									<input class="aspNetDisabled btn btn-success btn-sm" id="mainContent_btnComplete" name="ctl00$mainContent$btnComplete" type="submit" value="تکمیل خریدوانتقال به سایت پذیرنده">
+									<input class="aspNetDisabled btn btn-success btn-sm" ng-click="completePayment()" value="تکمیل خریدوانتقال به سایت پذیرنده">
 									<div class="clear"></div>
 								</div>
 								<div class="clear"></div>
@@ -85,15 +87,15 @@
 										<p><span class="editor-label">مبلغ پرداخت شده:</span> <font color="#0000"><span class="res" id="mainContent_lbl_amount" style="font-weight:bold;">9,500</span> ریال</font></p>
 										<p><span class="editor-label">شماره کارت:</span> <font color="#000"><span class="res" id="mainContent_lbl_Cardno" style="font-weight:bold;display: inline-block; direction: ltr;">610433******5736</span></font></p>
 										<p><span class="editor-label">نام بانک صادرکننده:</span> <font color="#000"><span class="res" id="mainContent_lbl_bank" style="font-weight:bold;">بانک ملت</span></font></p>
-										<p><span class="editor-label">شماره پیگیری:</span> <font color="#0000"><span class="res" id="mainContent_lbl_trace" style="font-weight:bold;">755068</span></font></p>
+										<p><span class="editor-label">شماره پیگیری:</span> <font color="#0000"><span class="res" id="mainContent_lbl_trace" style="font-weight:bold;">{{$scope.trackCode}}</span></font></p>
 									</div>
 									<div class="SS2 col-md-6 result">
 										<p><span class="editor-label">شماره ترمینال :</span> <font color="#000"><span class="editor-field" id="mainContent_lbl_termid" style="color:#000000;font-weight:bold;">10129134</span></font></p>
-										<p><span class="editor-label">نام فروشگاه :</span> <font color="#000"><span class="editor-field" id="mainContent_lbl_name" style="color:#000000;font-weight:bold;">شارژ همراه اول TopUp</span></font></p>
-										<p><span class="editor-label">آدرس سایت پذیرنده :</span> <font color="#000"><span class="editor-field" id="mainContent_lbl_siteurl" style="color:#000000;font-weight:bold;">mci.ir</span></font></p>
+										<p><span class="editor-label">نام فروشگاه :</span> <font color="#000"><span class="editor-field" id="mainContent_lbl_name" style="color:#000000;font-weight:bold;">خرید اینترنتی کتاب</span></font></p>
+										<p><span class="editor-label">آدرس سایت پذیرنده :</span> <font color="#000"><span class="editor-field" id="mainContent_lbl_siteurl" style="color:#000000;font-weight:bold;">bookstore.com</span></font></p>
 										<p><span class="editor-label">زمان تراکنش</span> <font color="#0000"><span id="mainContent_lbl_time" style="font-weight:bold;">06:08</span> <span id="mainContent_lbl_date" style="font-weight:bold;">1395/10/28</span></font></p>
-										<p><span class="editor-label">رسید دیجیتال:</span> <font color="#0000"><span class="res" id="mainContent_lbl_refnum" style="font-weight:bold;">qUEAipOyoOUD49VJvu8AAbOzv6rotJ</span></font></p>
-										<p><span class="editor-label">شماره مرجع:</span> <font color="#0000"><span class="res" id="mainContent_lbl_RRN" style="font-weight:bold;">5061444808</span></font></p>
+										<p><span class="editor-label">رسید دیجیتال:</span> <font color="#0000"><span class="res" id="mainContent_lbl_refnum" style="font-weight:bold;">{{payment.code}}</span></font></p>
+										<p><span class="editor-label">شماره مرجع:</span> <font color="#0000"><span class="res" id="mainContent_lbl_RRN" style="font-weight:bold;">{{145+payment.code+45}}</span></font></p>
 									</div>
 								</div>
 							</fieldset>
