@@ -1,9 +1,25 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" idmmzcc-ext-docid="583856128"><head id="Head">
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>
-	درگاه پرداخت اینترنتی پرداخت الکترونیک سامان
-</title><link href="css/styles.css" rel="stylesheet"><script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
-<body id="Body" class="pagebody">
+<html xmlns="http://www.w3.org/1999/xhtml" idmmzcc-ext-docid="583856128">
+
+<head id="Head">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        درگاه پرداخت اینترنتی پرداخت الکترونیک سامان
+    </title>
+<link href="css/styles.css" rel="stylesheet">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="js/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/paymentApp.js"></script>
+
+</head>
+
+
+<body id="Body" class="pagebody"  ng-app="paymentPage" ng-controller="paymentPageController">
     <script src="js/ScriptPayment"></script>
 
     <form method="POST" action="https://www.payping.ir/thanks/sep" id="CancelForm" name="CancelForm" autocomplete="off">
@@ -259,24 +275,24 @@ Sys.WebForms.PageRequestManager._initialize('ctl00$mainContent$PaymentService1$s
             <div class="merchant-name">
                 <i class="glyphicon glyphicon-user"></i>
                 <span class="editor-label">نام پذیرنده : </span>
-                <span id="mainContent_PaymentService1_lbl_name" style="color:DarkRed;">وحید ستوده قره باغ</span>
+                <span id="mainContent_PaymentService1_lbl_name" style="color:DarkRed;">فروشگاه خانه کتاب </span>
             </div>
             <div class="merchant-code">
                 <i class="glyphicon glyphicon-ok-circle"></i>
                 <span class="editor-label">کد پذیرنده : </span>
-                <span id="mainContent_PaymentService1_lbl_termid" style="color:DarkRed;">صالح جعفری زاده</span>
+                <span id="mainContent_PaymentService1_lbl_termid" style="color:DarkRed;">145-746712-DO</span>
             </div>
               <div class="merchant-code">
                 <i class="glyphicon glyphicon-globe"></i>
                 <span class="editor-label">آدرس پذیرنده : </span>
-                <span id="mainContent_PaymentService1_lbl_WebSite" style="color:DarkRed;">vahidsotudeh.vsg</span>
+                <span id="mainContent_PaymentService1_lbl_WebSite" style="color:DarkRed;">http://booksore.com</span>
             </div>
             <div class="merchant-amount">
                 <i class="glyphicon glyphicon-certificate"></i>
                 <span class="editor-label">مبلغ قابل پرداخت : </span>
                 <font color="#8b0000">
-                <span id="mainContent_PaymentService1_lbl_amount" class="amount">8 هزار میلیارد</span>
-                ریال </font>
+                <span id="mainContent_PaymentService1_lbl_amount" class="amount">{{}} هزارتومان</span>
+             </font>
             </div>
         </div>
     </div>

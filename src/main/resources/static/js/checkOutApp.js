@@ -16,6 +16,7 @@ bookStoreApp.controller('checkOutPageController',function checkOutPageController
     }
 
     $scope.shoppingCartItemsCount=$cookies.get("shoppingCartItemsCount")|0;
+    $scope.discountCode=$cookies.get("discountCode")|0;
 
     var test=$cookies.get("bookList");
     if(typeof test!="undefined")  {
@@ -61,6 +62,8 @@ bookStoreApp.controller('checkOutPageController',function checkOutPageController
             $scope.discount=resp.data;
             if(resp.data==0){
                  alert("متاسفانه کد تخفیف شما معتبر نمی باشد");
+            }else{
+                $cookies.put("discountCode",$scope.discountCode);
             }
          },function (error) { 
             alert("متاسفانه کد تخفیف شما معتبر نمی باشد");
@@ -166,7 +169,31 @@ bookStoreApp.controller('checkOutPageController',function checkOutPageController
                       return;
                   }
                   else{
-                    
+                                  //  var parameter = JSON.stringify({username:$scope.username, password:$scope.password});
+                      var myarr=[];
+                          for (var seeder=0;seeder < $scope.bookDetails.length;seeder++){
+                              alert($scope.bookDetails[seeder].id);
+                                myarr[seeder] = {
+                                    id:   $scope.bookDetails[seeder].id,
+                                    count: $scope.bookDetails[seeder].count
+                                };
+                            }
+                      var booksInOrder=JSON.stringify(myarr);
+                      var paymentOrder=JSON.stringify({token:$cookies.get("userToken"),books:myarr,discountCode:$scope.discountCode});
+                     $http({
+                            url: baseUrl+"/orderBooks",
+                            method: "POST",
+                            data: paymentOrder,
+                            headers: {'Content-Type': 'application/json'}
+                        }).then(function (resp) { 
+                            //  alert(resp.data);
+                          },function (error) { 
+                                alert("err");
+                                $timeout(function(){
+                                    $http.get(baseUrl+"/orderStat")
+                                }, 100);       
+                           });
+
                   }
                }
 

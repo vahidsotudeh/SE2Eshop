@@ -21,7 +21,7 @@ bookStoreApp.controller('bookDetailController',function bookDetailController($sc
         $scope.fetchBookDetail();
         $scope.addToShoppingCart=function () {
             if($scope.selectedCount){
-                $scope.shoppingCartItemsCount+=$scope.selectedCount;
+                $scope.shoppingCartItemsCount+=parseInt($scope.selectedCount);
                 $cookies.put("shoppingCartItemsCount",$scope.shoppingCartItemsCount);
                 var lastCount=0;
                 var check=$cookies.get("book:"+$scope.bookId);
