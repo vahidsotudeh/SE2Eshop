@@ -40,7 +40,7 @@ public class DiscountCodeDAO {
         criteria.add(Restrictions.eq("isEnabled","yes"));
 
         List<DiscountCode> codes = criteria.list();
-        System.out.println(codes);
+
         if(codes.size() == 0)
             return 0;
         else

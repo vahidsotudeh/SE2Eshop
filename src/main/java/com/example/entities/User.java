@@ -27,6 +27,39 @@ public class User {
     @JsonIgnore
     private String role;
 
+    @Column
+    private String phoneNumber;
+
+    @Column
+    private String postalCode;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    @Column
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     private Set<Comment> comments = new HashSet<>();
