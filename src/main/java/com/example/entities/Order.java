@@ -28,6 +28,17 @@ public class Order {
     @Column
     private int price;
 
+    @Column
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public int getPrice() {
         return price;
     }
@@ -44,15 +55,18 @@ public class Order {
         this.bookOrderAssignments = bookOrderAssignments;
     }
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User user;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "order")
     private Set<BookOrderAssignment> bookOrderAssignments = new HashSet<>();
 

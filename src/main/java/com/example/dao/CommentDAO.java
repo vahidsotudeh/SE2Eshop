@@ -38,7 +38,7 @@ public class CommentDAO {
 
         List<Comment> list = criteria.list();
 
-        Factory.getSessionCueentSession().close();
+        Factory.closeSession();
 
         return list;
     }

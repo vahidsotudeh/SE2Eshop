@@ -39,5 +39,11 @@ public class Factory {
         return sessionFactory;
     }
 
+    public static void closeSession()
+    {
+        if(session.isOpen())
+            session.close();
+    }
+
 
 }

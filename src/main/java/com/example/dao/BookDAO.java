@@ -37,8 +37,8 @@ public class BookDAO {
 
         if(books.size() == 0)
             return null;
-        Book book = (Book) criteria.list().get(0);
-        Factory.getSessionCueentSession().close();
+        Book book =  books.get(0);
+        Factory.closeSession();
         return book;
     }
 
@@ -50,7 +50,7 @@ public class BookDAO {
 
         List<Book> books = criteria.list();
 
-        Factory.getSessionCueentSession().close();
+        Factory.closeSession();
 
         return books;
     }
@@ -73,7 +73,7 @@ public class BookDAO {
         criteria.add(Restrictions.in("bookId",bookIds));
 
         List<Book> books = criteria.list();
-        Factory.getSessionCueentSession().close();
+        Factory.closeSession();
 
         return books;
     }

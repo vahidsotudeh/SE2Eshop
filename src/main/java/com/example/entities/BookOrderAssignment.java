@@ -22,13 +22,13 @@ public class BookOrderAssignment {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bookId", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Book book;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "orderId", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Order order;
 
     public long getId() {

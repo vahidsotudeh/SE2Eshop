@@ -29,14 +29,13 @@ public class UserDAO{
     public void add(User user)
     {
 
-        SessionFactory sessionFactory = Factory.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = Factory.getSessionCueentSession();
 
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
 
-        Factory.getSessionCueentSession().close();
+        session.close();
     }
 
 
@@ -93,7 +92,7 @@ public class UserDAO{
 
         List<User> users = criteria.list();
 
-        Factory.getSessionCueentSession().close();
+        Factory.closeSession();
 
         if (users.size() > 0) {
             return users.get(0);
@@ -103,8 +102,7 @@ public class UserDAO{
     }
     public void setTokenByUsername(String username,String newToken)
     {
-        SessionFactory sessionFactory = Factory.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = Factory.getSessionCueentSession();
 
         Criteria criteria = session.createCriteria(User.class);
 
@@ -119,14 +117,13 @@ public class UserDAO{
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
-        session.close();
+        Factory.closeSession();
 
     }
 
     public void setToken(String token,String newToken)
     {
-        SessionFactory sessionFactory = Factory.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = Factory.getSessionCueentSession();
 
         Criteria criteria = session.createCriteria(User.class);
 
@@ -142,9 +139,11 @@ public class UserDAO{
         user.setAccessToken(newToken);
 
         session.beginTransaction();
+
         session.update(user);
         session.getTransaction().commit();
-        session.close();
+
+        Factory.closeSession();
 
     }
 

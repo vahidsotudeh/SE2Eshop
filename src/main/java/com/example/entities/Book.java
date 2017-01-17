@@ -58,7 +58,7 @@ public class Book {
     @Column
     private String ISBN;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "book")
     private Set<Comment> comments = new HashSet<>();
 
