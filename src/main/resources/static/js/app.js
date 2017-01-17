@@ -1,6 +1,6 @@
 var bookStoreApp = angular.module('mainPage', ['ngCookies','ngRoute']);
-var baseUrl="http://192.168.43.191:8080/api";
-var imageBaseUrl="http://192.168.43.191:8080"; 
+var baseUrl="http://localhost:8080/api";
+var imageBaseUrl="http://localhost:8080";
  bookStoreApp.controller('moreBooks', function($scope,$http,$cookies,$route,$location,$routeParams) {
      $scope.name = 'moreBooks';
      $scope.params = $routeParams;

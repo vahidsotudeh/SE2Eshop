@@ -1,8 +1,8 @@
 var bookStoreApp = angular.module('checkOutPage', ['ngCookies','ngRoute']);
-var baseUrl="http://192.168.43.191:8080/api";
-var imageBaseUrl="http://192.168.43.191:8080"; 
-var absoluteUrlfake="file:///C:/Users/Microsoft/IdeaProjects/SE2Eshop/src/main/resources/static/bookDetail.html?";
-var absoluteUrlOrigion="http://192.168.43.191:8080/bookDetail.html?";
+var baseUrl="http://localhost:8080/api";
+var imageBaseUrl="http://localhost:8080";
+var absoluteUrlfake="file:///F:/bookstore/SE2Eshop/src/main/resources/static/bookDetail.html?";
+var absoluteUrlOrigion="http://localhost:8080/bookDetail.html?";
 var absoluteUrl=absoluteUrlfake;
 
 bookStoreApp.controller('checkOutPageController',function checkOutPageController($scope,$http,$cookies,$location,$routeParams) {
