@@ -22,7 +22,7 @@
     <script type="text/javascript" src="js/angular-resource.min.js"></script>
     <script type="text/javascript" src="js/angular-route.min.js"></script>
     <script type="text/javascript" src="js/checkOutApp.js"></script>
-
+    
 </head>
 
 <body ng-app="checkOutPage" ng-controller="checkOutPageController">
@@ -51,13 +51,16 @@
                 </button>
                     </div>
                 </form>
-                <div id="loginSignUp">
-                    <a href="#">ثبت نام</a> |
-                    <a href="#">ورود</a>
+                <div ng-show="!isLogin" id="loginSignUp">
+                    <a class="modal_trigger" href="#modal">ثبت نام</a> |
+                    <a class="modal_trigger" href="#modal">ورود</a>
+                </div>
+                <div ng-show="isLogin" id="loginSignUp">
+                    <a >سلام {{user.nameFa}} عزیز </a> | <a ng-click="logOut()">خروج</a>
                 </div>
                 <div id="shoppingCart" style="float:right">
                     <Button id="shoppingCartBtn" class="btn btn-primary">
-                    1<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                    {{shoppingCartItemsCount}}<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 </Button>
                 </div>
                 <div id="header-menu" class="nav navbar-nav">
@@ -108,7 +111,7 @@
             <div class="col-md-2 col-sm-2 col-xs-2 text-center">
                 {{book.count*book.price}} هزارتومان
             </div>
-            <div class="col-md-1 col-sm-1 col-xs-1 text-center">حذف</div> 
+            <div class="col-md-1 col-sm-1 col-xs-1 text-center"><button ng-click="removeItem(book.id)"> حذف</button></div> 
         </div>   
  
         <div class="row" style="margin-top:20px;text-align:left;border-bottom:solid;border-width:1px;">
@@ -121,8 +124,8 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-5">
-                    <h5 style="color:red">-تخفیف : {{discount}} تومان </h5>
-                    قیمت کل : {{totalPrice}} هزارتومان
+                    <h5 style="color:red">-تخفیف : {{discount}} هزارتومان </h5>
+                    قیمت کل : {{totalPrice-discount}} هزارتومان
             </div>
         </div>  
         </div>
@@ -134,10 +137,10 @@
         </div>
         <div class="row text-right adress-form">
             <div class="col-md-6 col-sm-6 col-xs-6">
-                 <h5>نام و نام خانوادگی : وحید ستوده </h5>  
-                 <h5>شماره تلفن : 09634279354 </h5>  
-                 <h5>کد پستی : 571683874</h5>  
-                 <h5>آدرس دقیق : تهران اونجا است</h5>  
+                 <h5>نام و نام خانوادگی : {{user.nameFa}} </h5>  
+                 <h5>شماره تلفن : {{user.phoneNumber}} </h5>  
+                 <h5>کد پستی : {{user.postalCode}}</h5>  
+                 <h5>آدرس دقیق : {{user.address}}</h5>  
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6 ">
                 <form class="address-form">
@@ -176,19 +179,19 @@
             <div class="col-md-9 col-sm-7 col-xs-6 text-right">خرید نهایی</div>
             <div class="col-md-3 col-sm-5 col-xs-6 text-right" style="line-height:1.7;" >
                 <div>
-                    هزینه سفارش : 850,000 تومان 
+                    هزینه سفارش : {{totalPrice}}هزار تومان 
                 </div>
                 <div>
-                    مالیات : 850,000 تومان 
+                    مالیات(10 درصد) : {{totalPrice*0.1}} هزار تومان 
                 </div>
                 <div style="border-bottom:solid;border-width:1px;">
                     هزینه ارسال : رایگان 
                 </div>
                 <div style="font-size:18px;">
-                    جمع کل : 860,000 تومان                      
+                    جمع کل : {{totalPrice-discount+(totalPrice*0.1)}} هزار تومان                      
                 </div>
                 <form>
-                <button style="width:65%;border-radius:0px;margin-top:10px;font-size:18px;background-color:#fbc02d;color:#000;" class="btn btn-success"> پرداخت کنید </button>
+                <button ng-click="payment()" style="width:65%;border-radius:0px;margin-top:10px;font-size:18px;background-color:#fbc02d;color:#000;" class="btn btn-success"> پرداخت کنید </button>
                     
                 </form>
             </div>
@@ -242,6 +245,87 @@
             </div>
         </div>
     </footer>
+          	<div id="modal" class="popupContainer" style="display:none;font-family: 'BYekan'">
+		<header class="popupHeader">
+			<span class="header_title">ورود</span>
+			<span class="modal_close"><i class="fa fa-times"></i></span>
+		</header>
+		
+		<section class="popupBody">
+			<!-- Social Login -->
+			<div class="social_login">
+				<div class="">
+					<a href="#" class="social_box fb">
+						<span class="icon"><i class="fa fa-facebook"></i></span>
+						<span class="icon_title">اتصال با فیسبوک</span>
+						
+					</a>
+
+					<a href="#" class="social_box google">
+						<span class="icon"><i class="fa fa-google-plus"></i></span>
+						<span class="icon_title">اتصال با گوگل</span>
+					</a>
+				</div>
+
+				<div class="centeredText">
+					<span>یا از حساب کاربری خود  استفاده کنید</span>
+				</div>
+
+				<div class="action_btns">
+					<div class="one_half"><a href="#" id="login_form" class="btn">ورود</a></div>
+					<div class="one_half last"><a href="#" id="register_form" class="btn">ثبت نام</a></div>
+				</div>
+			</div>
+
+			<!-- Username & Password Login form -->
+			<div class="user_login">
+				<form ng-submit="login()">
+					<label>ایمیل / نام کاربری</label>
+					<input type="text" id="username" name="username" ng-model="username"/>
+					<br />
+
+					<label>رمز عبور</label>
+					<input type="password" ng-model="password"/>
+					<br />
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> برگشت</a></div>
+						<div class="one_half last"><input type="submit" value="ورود" class="btn btn_red"/></div>
+					</div>
+				</form>
+
+				<a href="#" class="forgot_password">رمز خود را فراموش کرده اید؟</a>
+			</div>
+
+			<!-- Register Form -->
+			<div class="user_register">
+				<form ng-submit="signUp()">
+					<label>نام و نام خانوادگی</label>
+					<input ng-model="nameFa"  type="text" />
+					<br />
+					<label>آدرس</label>
+					<input ng-model="address" type="text" />
+					<br />
+					<label>شماره تلفن</label>
+					<input ng-model="phoneNumber" type="text" />
+					<br />
+					<label>نام کاربری</label>
+					<input ng-model="username" type="text" />
+					<br />
+
+					<label>رمز عبور </label>
+					<input ng-model="password" type="password" />
+					<br />
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> برگشت</a></div>
+						<div class="one_half last"><input type="submit" value="ثبت نام" class="btn btn_red"></div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+
     </div>
     <!-- /container -->
 
@@ -250,7 +334,37 @@
     <script src="js/jquery.easing.1.31.js" type="text/javascript"></script>
     <script src="js/jquery.fitvids.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+
     <script>
+    	$(".modal_trigger").leanModal({top : 110, overlay : 0.8, closeButton: ".modal_close" });
+
+	$(function(){
+		// Calling Login Form
+		$("#login_form").click(function(){
+			$(".social_login").hide();
+			$(".user_login").show();
+			return false;
+		});
+
+		// Calling Register Form
+		$("#register_form").click(function(){
+			$(".social_login").hide();
+			$(".user_register").show();
+			$(".header_title").text('ثبت نام');
+			return false;
+		});
+
+		// Going back to Social Forms
+		$(".back_btn").click(function(){
+			$(".user_login").hide();
+			$(".user_register").hide();
+			$(".social_login").show();
+			$(".header_title").text('ورود');
+			return false;
+		});
+
+	})
     </script>
 </body>
 

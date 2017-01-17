@@ -23,9 +23,12 @@ bookStoreApp.controller('bookDetailController',function bookDetailController($sc
             if($scope.selectedCount){
                 $scope.shoppingCartItemsCount+=$scope.selectedCount;
                 $cookies.put("shoppingCartItemsCount",$scope.shoppingCartItemsCount);
-                if(!$cookies.get("book:"+$scope.bookId)){
+                var lastCount=0;
+                var check=$cookies.get("book:"+$scope.bookId);
+                if(typeof check !="undefined"){
                     $scope.individualItems=$cookies.get("individualItems")+1|1;
                     var list=$cookies.get("bookList");
+                    lastCount=parseInt($cookies.get("book:"+$scope.bookId));
                     if(list)
                         $cookies.put("bookList",list+"-"+$scope.bookId);
                     else{
@@ -33,7 +36,8 @@ bookStoreApp.controller('bookDetailController',function bookDetailController($sc
                     }
                 }
                 $cookies.put("individualItems",$scope.individualItems);
-                $cookies.put("book:"+$scope.bookId,$scope.selectedCount);
+                lastCount+=parseInt($scope.selectedCount);
+                $cookies.put("book:"+$scope.bookId,lastCount);
             }
           }
         
