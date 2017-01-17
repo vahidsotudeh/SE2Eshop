@@ -1,12 +1,8 @@
 package com.example.controllers;
 
-import com.example.dao.OrderDAO;
 import com.example.dao.UserDAO;
-import com.example.dto.LoginDTO;
-import com.example.dto.RegistrationDTO;
-import com.example.entities.Order;
+
 import com.example.entities.User;
-import com.example.security.AccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpSession;
@@ -38,9 +34,9 @@ public class UserService {
 
         String accessToken = new BigInteger(130, new SecureRandom()).toString(32);
 
-        UserDAO.getInstance().setToken(username,accessToken);
+        UserDAO.getInstance().setTokenByUsername(username,accessToken);
 
-        AccessHandler.setAccessToken(accessToken,user.getRole(),session,user.getUsername());
+//        AccessHandler.setAccessToken(accessToken,user.getRole(),session,user.getUsername());
 
         return Response.ok().entity(accessToken).build();
     }
@@ -58,35 +54,44 @@ public class UserService {
 
     @GET
     @Path("logout")
-    public Response logout()
+    public Response logout(@QueryParam("token") String token)
     {
-        UserDAO.getInstance().setToken((String) session.getAttribute("username"),"");
+        UserDAO.getInstance().setToken(token,"");
 
         return Response.ok().build();
     }
 
-    @POST
+    @GET
     @Path("register")
-    @Produces("application/json")
-    @Consumes("application/json")
-    public Response register(RegistrationDTO dto)
+    public Response register(@QueryParam("username")String username,
+                             @QueryParam("password")String password,
+                             @QueryParam("nameFa")String nameFa,
+                             @QueryParam("phoneNumber")String phoneNumber,
+                             @QueryParam("address")String address)
     {
-        User user = UserDAO.getInstance().findByUserName(dto.getUsername());
+        User user = UserDAO.getInstance().findByUserName(username);
 
         if(user != null)
-            return Response.ok("username exists").build();
+            return Response.status(Response.Status.FORBIDDEN).build();
 
         User newUser = new User();
 
-        newUser.setNameEn(dto.getNameEn());
-        newUser.setNameFa(dto.getNameFa());
-        newUser.setUsername(dto.getUsername());
-        newUser.setPassword(dto.getPassword());
+        newUser.setPhoneNumber(phoneNumber);
+        newUser.setAddress(address);
+        newUser.setNameFa(nameFa);
+        newUser.setUsername(username);
+        newUser.setPassword(password);
         newUser.setRole("user");
 
         UserDAO.getInstance().add(newUser);
 
-        return Response.ok("registered successfully").build();
+        String accessToken = new BigInteger(130, new SecureRandom()).toString(32);
+
+        UserDAO.getInstance().setTokenByUsername(username,accessToken);
+
+//        AccessHandler.setAccessToken(accessToken,user.getRole(),session,user.getUsername());
+
+        return Response.ok(accessToken).build();
     }
 
     @GET

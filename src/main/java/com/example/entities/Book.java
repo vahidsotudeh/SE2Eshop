@@ -18,7 +18,7 @@ import java.util.Set;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id")
     private String bookId;
 
@@ -64,18 +64,15 @@ public class Book {
 
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "book_order",joinColumns = {
-            @JoinColumn(name = "bookId") },
-            inverseJoinColumns = { @JoinColumn(name = "orderId") })
-    private Set<Order> orders = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "book")
+    private Set<BookOrderAssignment> bookOrderAssignments = new HashSet<>();
 
-    public Set<Order> getOrders() {
-        return orders;
+    public Set<BookOrderAssignment> getBookOrderAssignments() {
+        return bookOrderAssignments;
     }
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
+    public void setBookOrderAssignments(Set<BookOrderAssignment> bookOrderAssignments) {
+        this.bookOrderAssignments = bookOrderAssignments;
     }
 
     public String getISBN() {

@@ -48,8 +48,7 @@ public class CommentDAO {
 
     private Criteria createCriteria()
     {
-        SessionFactory sessionFactory = Factory.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = Factory.getSessionCueentSession();
 
         return session.createCriteria(Comment.class);
     }

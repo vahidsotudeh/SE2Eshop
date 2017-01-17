@@ -19,6 +19,7 @@ public class JesrseyConfig extends ResourceConfig {
         register(DiscountController.class);
         register(PaymentController.class);
         register(OrderController.class);
+        register(BookOrderController.class);
 
         property(ServletProperties.FILTER_FORWARD_ON_404, true);
     }

@@ -2,16 +2,18 @@ package com.example.controllers;
 
 import com.example.dao.BookDAO;
 import com.example.dao.OrderDAO;
-import com.example.dto.BookLightDTO;
+import com.example.dao.UserDAO;
+import com.example.dto.OrderDTO;
+import com.example.dto.SingleOrderDTO;
 import com.example.entities.Book;
 import com.example.entities.Order;
+import com.example.entities.User;
+import com.example.handlers.OrderServiceHandler;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,4 +31,13 @@ public class OrderController {
 
         return Response.ok().entity(orders).build();
     }
+
+    @POST
+    @Path("orderBooks")
+    @Produces("application/json")
+    public Response orderBooks(OrderDTO dto)
+    {
+        return new OrderServiceHandler(dto).handle();
+    }
+
 }

@@ -52,11 +52,11 @@ public class AccessHandler {
         }
     }
 
-    public static void setAccessToken(String accessToken,String role,HttpSession session,String username)
-    {
-        session.setAttribute("isLoggedIn","true");
-        session.setAttribute("token",accessToken);
-        session.setAttribute("role",role);
-        session.setAttribute("username",username);
-    }
+//    public static void setAccessToken(String accessToken,String role,HttpSession session,String username)
+//    {
+//        session.setAttribute("isLoggedIn","true");
+//        session.setAttribute("token",accessToken);
+//        session.setAttribute("role",role);
+//        session.setAttribute("username",username);
+//    }
 }

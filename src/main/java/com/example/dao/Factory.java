@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -11,7 +12,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
  */
 public class Factory {
 
-    private static SessionFactory sessionFactory = buildSessionFactory();
+    private static Session session = buildSessionFactory().openSession();
     private static SessionFactory buildSessionFactory()
     {
         StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
@@ -24,13 +25,9 @@ public class Factory {
 
         return metadata.getSessionFactoryBuilder().build();
     }
-    public static SessionFactory getSessionFactory()
+    public static Session getSessionCueentSession()
     {
-        return sessionFactory;
+        return session;
     }
 
-    public static void shutdown()
-    {
-        getSessionFactory().close();
-    }
 }

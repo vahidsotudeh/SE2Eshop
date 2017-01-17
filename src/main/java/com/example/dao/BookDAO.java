@@ -7,7 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,18 +51,34 @@ public class BookDAO {
 
     public void add(Book book)
     {
-        SessionFactory sessionFactory = Factory.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = Factory.getSessionCueentSession();
 
         session.beginTransaction();
         session.save(book);
         session.getTransaction().commit();
 
     }
+
+    public void save(List<Book> books)
+    {
+        Session session = Factory.getSessionCueentSession();
+
+        session.beginTransaction();
+        for(Book book : books)
+            session.update(book);
+        session.getTransaction().commit();
+    }
+
+    public List<Book> getBooks(ArrayList<String> bookIds)
+    {
+        Criteria criteria = createCriteria();
+        criteria.add(Restrictions.in("bookId",bookIds));
+
+        return criteria.list();
+    }
     private Criteria createCriteria()
     {
-        SessionFactory sessionFactory = Factory.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = Factory.getSessionCueentSession();
 
         return session.createCriteria(Book.class);
     }

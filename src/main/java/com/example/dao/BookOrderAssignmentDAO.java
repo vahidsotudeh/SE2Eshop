@@ -1,11 +1,12 @@
 package com.example.dao;
 
 import com.example.entities.Book;
+import com.example.entities.BookOrderAssignment;
 import com.example.entities.Comment;
-import com.example.entities.Order;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,29 +14,30 @@ import java.util.List;
 /**
  * Created by Amir Shams on 1/17/2017.
  */
-public class OrderDAO {
-    private static OrderDAO instance;
-    public static OrderDAO getInstance()
+public class BookOrderAssignmentDAO {
+    private static BookOrderAssignmentDAO instance;
+    public static BookOrderAssignmentDAO getInstance()
     {
         if(instance == null)
-            instance = new OrderDAO();
+            instance = new BookOrderAssignmentDAO();
         return instance;
     }
-    private OrderDAO()
+    private BookOrderAssignmentDAO()
     {
 
     }
 
-    public void save(Order order)
+    public void save(ArrayList<BookOrderAssignment> assignments)
     {
         Session session = Factory.getSessionCueentSession();
 
         session.beginTransaction();
-        session.save(order);
+        for(BookOrderAssignment assignment : assignments)
+            session.save(assignment);
         session.getTransaction().commit();
     }
 
-    public List<Order> getAll()
+    public List<BookOrderAssignment> getAll()
     {
         Criteria criteria = createCriteria();
 
@@ -46,6 +48,6 @@ public class OrderDAO {
     {
         Session session = Factory.getSessionCueentSession();
 
-        return session.createCriteria(Order.class);
+        return session.createCriteria(BookOrderAssignment.class);
     }
 }
