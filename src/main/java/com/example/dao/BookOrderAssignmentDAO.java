@@ -1,14 +1,9 @@
 package com.example.dao;
 
-import com.example.entities.Book;
 import com.example.entities.BookOrderAssignment;
-import com.example.entities.Comment;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +24,7 @@ public class BookOrderAssignmentDAO {
 
 //    public void save(ArrayList<BookOrderAssignment> assignments)
 //    {
-//        SessionFactory sessionFactory = Factory.getSessionFactory();
+//        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 //        Session session = sessionFactory.openSession();
 //
 //        session.beginTransaction();
@@ -47,7 +42,7 @@ public class BookOrderAssignmentDAO {
 
     private Criteria createCriteria()
     {
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
 
         return session.createCriteria(BookOrderAssignment.class);
     }

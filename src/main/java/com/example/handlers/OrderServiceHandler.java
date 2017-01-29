@@ -77,7 +77,7 @@ public class OrderServiceHandler {
         for(BookOrderAssignment assignment : bookOrderAssignments)
             assignment.setOrder(customerOrder);
 
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
 
         Transaction tx = session.beginTransaction();
 
@@ -90,8 +90,6 @@ public class OrderServiceHandler {
             session.save(assignment);
 
         tx.commit();
-
-        Factory.closeSession();
 
         return Response.ok(totalPrice - discountAmount).build();
 

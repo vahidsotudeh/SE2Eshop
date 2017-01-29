@@ -2,10 +2,8 @@ package com.example.dao;
 
 
 import com.example.entities.User;
-import com.sun.org.apache.bcel.internal.generic.FADD;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 
@@ -29,7 +27,7 @@ public class UserDAO{
     public void add(User user)
     {
 
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
 
         session.beginTransaction();
         session.save(user);
@@ -47,8 +45,6 @@ public class UserDAO{
         criteria.add(Restrictions.eq("username",username));
 
         List<User> users = criteria.list();
-
-        Factory.getSessionCueentSession().close();
 
         if (users.size() > 0) {
             return users.get(0);
@@ -73,8 +69,6 @@ public class UserDAO{
 
         List<User> users = criteria.list();
 
-        Factory.getSessionCueentSession().close();
-
         if (users.size() > 0) {
             return users.get(0);
         } else {
@@ -92,8 +86,6 @@ public class UserDAO{
 
         List<User> users = criteria.list();
 
-        Factory.closeSession();
-
         if (users.size() > 0) {
             return users.get(0);
         } else {
@@ -102,7 +94,7 @@ public class UserDAO{
     }
     public void setTokenByUsername(String username,String newToken)
     {
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
 
         Criteria criteria = session.createCriteria(User.class);
 
@@ -117,13 +109,11 @@ public class UserDAO{
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
-        Factory.closeSession();
-
     }
 
     public void setToken(String token,String newToken)
     {
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
 
         Criteria criteria = session.createCriteria(User.class);
 
@@ -142,14 +132,11 @@ public class UserDAO{
 
         session.update(user);
         session.getTransaction().commit();
-
-        Factory.closeSession();
-
     }
 
     private Criteria createCriteria()
     {
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
         return session.createCriteria(User.class);
     }
 }

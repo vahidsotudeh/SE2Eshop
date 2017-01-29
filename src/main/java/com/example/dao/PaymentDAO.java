@@ -3,7 +3,6 @@ package com.example.dao;
 import com.example.entities.Payment;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class PaymentDAO {
 
     private Criteria createCriteria()
     {
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
 
         return session.createCriteria(Payment.class);
     }

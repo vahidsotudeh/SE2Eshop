@@ -1,10 +1,8 @@
 package com.example.dao;
 
-import com.example.entities.Book;
 import com.example.entities.DiscountCode;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -41,8 +39,6 @@ public class DiscountCodeDAO {
 
         List<DiscountCode> codes = criteria.list();
 
-        Factory.closeSession();
-
         if(codes.size() == 0)
             return 0;
         else
@@ -51,7 +47,7 @@ public class DiscountCodeDAO {
 
     private Criteria createCriteria()
     {
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
 
         return session.createCriteria(DiscountCode.class);
     }

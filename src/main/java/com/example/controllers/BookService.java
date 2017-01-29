@@ -28,7 +28,7 @@ public class BookService {
     public Response getBookSummary(
             @DefaultValue("0") @QueryParam("start") int start,
             @DefaultValue("10") @QueryParam("len") int len,
-            @DefaultValue("id") @QueryParam("order") String orderBy) throws IOException {
+            @DefaultValue("bookId") @QueryParam("order") String orderBy) throws IOException {
 
         List<Book> books = BookDAO.getInstance().getOrderedBooks(start,len,orderBy);
         List<BookLightDTO> result = new ArrayList<>();

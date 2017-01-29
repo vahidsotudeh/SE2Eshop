@@ -1,16 +1,12 @@
 package com.example.controllers;
 
-import com.example.dao.BookDAO;
-import com.example.dao.Factory;
+import com.example.dao.HibernateUtils;
 import com.example.dao.OrderDAO;
 import com.example.dao.UserDAO;
 import com.example.dto.OrderDTO;
-import com.example.dto.SingleOrderDTO;
-import com.example.entities.Book;
 import com.example.entities.Order;
 import com.example.entities.User;
 import com.example.handlers.OrderServiceHandler;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import org.hibernate.Session;
 
 import javax.ws.rs.*;
@@ -18,7 +14,6 @@ import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -85,11 +80,10 @@ public class OrderController {
 
         //add payment record to its table
 
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
         session.beginTransaction();
         session.update(order);
         session.getTransaction().commit();
-        Factory.closeSession();
 
         return Response.ok().entity(code).build();
     }

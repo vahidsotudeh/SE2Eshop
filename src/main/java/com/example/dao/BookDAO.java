@@ -4,10 +4,8 @@ package com.example.dao;
 import com.example.entities.Book;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +36,6 @@ public class BookDAO {
         if(books.size() == 0)
             return null;
         Book book =  books.get(0);
-        Factory.closeSession();
         return book;
     }
 
@@ -50,14 +47,12 @@ public class BookDAO {
 
         List<Book> books = criteria.list();
 
-        Factory.closeSession();
-
         return books;
     }
 //
 //    public void add(Book book)
 //    {
-//        SessionFactory sessionFactory = Factory.getSessionFactory();
+//        SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 //        Session session = sessionFactory.openSession();
 //
 //        session.beginTransaction();
@@ -73,14 +68,13 @@ public class BookDAO {
         criteria.add(Restrictions.in("bookId",bookIds));
 
         List<Book> books = criteria.list();
-        Factory.closeSession();
 
         return books;
     }
     private Criteria createCriteria()
     {
 
-        Session session = Factory.getSessionCueentSession();
+        Session session = HibernateUtils.getSession();
 
         return session.createCriteria(Book.class);
     }
